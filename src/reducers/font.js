@@ -7,7 +7,7 @@ export function positionToString(x, y) {
 export const CHARACTERS_ADD = 'font:character:add';
 export const CHARACTERS_REMOVE = 'font:character:remove';
 export const SIZE_SET = 'font:size:set';
-export const PIXEL_SET = 'font:pixel:set';
+export const PIXELS_SET = 'font:pixel:set';
 export const NAME_SET = 'font:name:set';
 
 // action creators
@@ -40,13 +40,16 @@ export function setHeight(height) {
 	return setSize({ height });
 }
 
+export function setPixels(pixels = []) {
+	return { type: PIXELS_SET, pixels };
+}
 export function setPixel({
 	character = '',
 	x = 0,
 	y = 0,
 	value = false,
 }) {
-	return { type: PIXEL_SET, character, x, y, value };
+	return setPixels([{ character, x, y, value }]);
 }
 
 export function setName(name) {
@@ -99,8 +102,30 @@ export default function fontReducer(state = initialState, action) {
 					height,
 				};
 			}
-		case PIXEL_SET:
+		case PIXELS_SET:
 			{
+				const newCharacters = action.pixels.reduce((result, {
+					character = '',
+				}) => {
+					const {
+						characters: {
+							[character]: oldCharacter = {},
+						} = {},
+					} = state;
+					result[character] = {
+						...oldCharacter,
+					};
+					return result;
+				}, {});
+				action.pixels.reduce((result, {
+					character = '',
+					x = 0,
+					y = 0,
+					value = false,
+				}) => {
+					result[character][positionToString(x, y)] = value;
+					return result;
+				}, newCharacters);
 				const {
 					character,
 					x,
@@ -108,23 +133,13 @@ export default function fontReducer(state = initialState, action) {
 					value,
 				} = action;
 				const {
-					characters: {
-						[action.character]: {
-							[positionToString(x, y)]: editedPixel,
-							...characterPixels,
-						} = {},
-						...characters,
-					},
+					characters: oldCharacters = {},
 				} = state;
-				const newPixels = value ? {
-					...characterPixels,
-					[positionToString(x, y)]: value,
-				} : characterPixels;
 				return {
 					...state,
 					characters: {
-						...characters,
-						[character]: newPixels
+						...oldCharacters,
+						...newCharacters,
 					},
 				};
 			}
