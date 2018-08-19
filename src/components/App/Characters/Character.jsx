@@ -15,7 +15,7 @@ export function Character({
 	const pixels = [];
 	for(let y = 0; y < height; ++y) {
 		for(let x = 0; x < width; ++x) {
-			pixels.push(<Pixel character={character} x={x} y={y} />);
+			pixels.push(<Pixel key={`${character},${x},${y}`} character={character} x={x} y={y} />);
 		}
 	}
 	const style = {
