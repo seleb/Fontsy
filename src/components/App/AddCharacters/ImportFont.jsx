@@ -4,14 +4,7 @@ import { connect } from 'preact-redux';
 import { imageToFont } from '../../../lib/imageConverter';
 import { textToFont } from '../../../lib/fontConverter';
 
-import {
-	setWidth,
-	setHeight,
-	addCharacters,
-	setPixels,
-	setName,
-	removeAllCharacters,
-} from '../../../reducers/font';
+import { setFont } from '../../../reducers/font';
 
 import './ImportFont.css';
 
@@ -34,24 +27,18 @@ export class ImportFont extends Component {
 				result = '',
 			} = {},
 		}) => {
-			this.props.removeAllCharacters();
 			let getFont;
 			if (file.type === 'image/png') {
-				getFont = ()=>imageToFont(result).then(result => ({
+				getFont = () => imageToFont(result).then(result => ({
 					...result,
 					name: file.name.split(/(\.bitsyfont)?\.png/)[0],
 				}));
 			} else if (file.name.toLowerCase().endsWith('.bitsyfont')) {
-				getFont = ()=>Promise.resolve(textToFont(atob(result.substr(13))));
+				getFont = () => Promise.resolve(textToFont(atob(result.substr(13))));
 			} else {
 				throw new Error('Unsupported file type');
 			}
-			getFont().then(font => {
-				this.props.setName(font.name);
-				this.props.setWidth(font.width);
-				this.props.setHeight(font.height);
-				this.props.setPixels(font.pixels);
-			});
+			getFont().then(this.props.setFont);
 		};
 
 		reader.readAsDataURL(file);
@@ -68,12 +55,7 @@ export class ImportFont extends Component {
 }
 
 export const mapDispatchToProps = {
-	setWidth,
-	setHeight,
-	addCharacters,
-	setPixels,
-	setName,
-	removeAllCharacters,
+	setFont,
 }
 
 export default connect(undefined, mapDispatchToProps)(ImportFont);
