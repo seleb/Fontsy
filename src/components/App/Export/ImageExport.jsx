@@ -1,64 +1,44 @@
 import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
 
-import './ImageExport.css';
+import { fontToImage } from '../../../lib/imageConverter';
+
 import {
 	getWidth,
 	getHeight,
-	getCharacters,
-	getPixelValue,
+	getName,
+	getCharactersWithPixels,
 } from '../../../reducers/font';
+
+import './ImageExport.css';
 
 export function ImageExport({
 	src = '',
+	name = '',
 	width = 0,
 	height = 0,
 }) {
+	const title = `${name}.bitsyfont.png`
 	return <div className="image-export">
-		<img src={src} width={width} height={height} />
+		<a download={title} href={src} title={title}>
+			<img src={src} width={width} height={height} alt={title} title={title} />
+		</a>
 	</div>;
 }
 
 export function mapStateToProps(state) {
+	
 	const width = getWidth(state);
 	const height = getHeight(state);
-	const characters = Object.keys(getCharacters(state));
-
-	const canvas = document.createElement('canvas');
-	const context = canvas.getContext('2d');
-
-	const white = context.createImageData(1, 1);
-	white.data[0] = 255;
-	white.data[1] = 255;
-	white.data[2] = 255;
-	white.data[3] = 255;
-
-	const black = context.createImageData(1, 1);
-	black.data[0] = 0;
-	black.data[1] = 0;
-	black.data[2] = 0;
-	black.data[3] = 255;
-
-	canvas.width = width;
-	canvas.height = characters.length * height;
-
-	characters.forEach((character, idx) => {
-		for (let y = 0; y < height; ++y) {
-			for (let x = 0; x < width; ++x) {
-
-				context.putImageData(
-					getPixelValue(state, { character, x, y }) ? white : black,
-					x,
-					y + idx * height
-				);
-			}
-		}
-	});
+	const characters = getCharactersWithPixels(state);
 
 	return {
-		src: canvas.toDataURL(),
-		width: canvas.width,
-		height: canvas.height,
+		...fontToImage({
+			width,
+			height,
+			characters,
+		}),
+		name: getName(state),
 	};
 }
 
