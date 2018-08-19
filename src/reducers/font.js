@@ -208,3 +208,24 @@ export function getPixelValue({
 	} = characters;
 	return !!value;
 }
+
+export function getCharactersWithPixels(state) {
+	const width = getWidth(state);
+	const height = getHeight(state);
+	return Object.keys(getCharacters(state)).map(character => {
+		// character
+		const pixels = [];
+		for (let y = 0; y < height; ++y) {
+			const row = [];
+			pixels.push(row);
+			for (let x = 0; x < width; ++x) {
+				row.push(getPixelValue(state, { character, x, y }));
+			}
+		}
+
+		return {
+			character,
+			pixels,
+		};
+	});
+}
