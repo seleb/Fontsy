@@ -33,6 +33,11 @@ export class Characters extends Component {
 		const {
 			row = 0,
 		} = this.state;
+		if (row < 0) {
+			this.setState({
+				row: 0,
+			});
+		}
 		const {
 			characters = [],
 		} = this.props;
