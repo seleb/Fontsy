@@ -22,10 +22,23 @@ export class Characters extends Component {
 		};
 	}
 
-	onWheel = event => {
+	nextPage = () => {
+		const {
+			characters = [],
+		} = this.props;
 		this.setState(({ row }) => ({
-			row: Math.max(0, row + Math.sign(event.deltaY)),
+			row: Math.min(getLimit(characters.length), ++row),
 		}));
+	}
+
+	prevPage = () => {
+		this.setState(({ row }) => ({
+			row: Math.max(0, --row),
+		}));
+	}
+
+	onWheel = event => {
+		(Math.sign(event.deltaY) > 0 ? this.nextPage : this.prevPage)();
 		event.preventDefault();
 	}
 
@@ -58,11 +71,18 @@ export class Characters extends Component {
 			gridTemplateColumns: `repeat(${charactersPerRow}, 1fr)`,
 		};
 		return (
-			<div className="characters" style={style} onWheel={this.onWheel}>
-				{characters
-					.slice(row * charactersPerRow, (row + rows) * charactersPerRow)
-					.map(character => <Character character={character} />)}
-			</div>
+			<main className="characters">
+				<nav className="characters-controls">
+					<button className="button prev" onClick={this.prevPage}>&lt;</button>
+					{row + 1}/{getLimit(characters.length) + 1}
+					<button className="button next" onClick={this.nextPage}>&gt;</button>
+				</nav>
+				<div className="characters" style={style} onWheel={this.onWheel}>
+					{characters
+						.slice(row * charactersPerRow, (row + rows) * charactersPerRow)
+						.map(character => <Character key={character} character={character} />)}
+				</div>
+			</main>
 		);
 	}
 }

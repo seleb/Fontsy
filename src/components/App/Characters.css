@@ -1,4 +1,26 @@
 .characters {
+	display: flex;
+	flex-direction: column;
+}
+.characters>.characters {
+	flex: auto;
 	display: grid;
 	grid-gap: 1px;
+}
+
+.characters>.characters-controls {
+	flex: none;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.characters>.characters-controls>.button {
+	flex: none;
+	width: 2em;
+	height: 2em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
