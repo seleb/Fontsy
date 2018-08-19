@@ -2,8 +2,8 @@ import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
 
 import {
-	addCharacter,
-	removeCharacter,
+	addCharacters,
+	removeCharacters,
 } from '../../../reducers/font';
 
 import './CharacterSet.css';
@@ -12,27 +12,23 @@ import './CharacterSet.css';
 export class CharacterSet {
 	add = () => {
 		const {
-			addCharacter,
+			addCharacters,
 			start,
 			end,
 		} = this.props;
-		if (addCharacter) {
-			for (let i = start; i <= end; ++i) {
-				addCharacter(i);
-			}
+		if (addCharacters) {
+			addCharacters(new Array(end - start).fill(start).map((v, i) => v + i));
 		}
 	}
 
 	remove = () => {
 		const {
-			removeCharacter,
+			removeCharacters,
 			start,
 			end,
 		} = this.props;
-		if (removeCharacter) {
-			for (let i = start; i <= end; ++i) {
-				removeCharacter(i);
-			}
+		if (removeCharacters) {
+			removeCharacters(new Array(end - start).fill(start).map((v, i) => v + i));
 		}
 	}
 
@@ -41,7 +37,7 @@ export class CharacterSet {
 		start = 0,
 		end = 0,
 	}) {
-		const title=`${name} (${end-start})`;
+		const title = `${name} (${end - start})`;
 		return (
 			<div class="character-set">
 				<span className="name" title={title}>{title}</span>
@@ -53,8 +49,8 @@ export class CharacterSet {
 }
 
 export const mapDispatchToProps = {
-	addCharacter,
-	removeCharacter,
+	addCharacters,
+	removeCharacters,
 };
 
 export default connect(undefined, mapDispatchToProps)(CharacterSet);

@@ -4,18 +4,26 @@ export function positionToString(x, y) {
 }
 
 // actions
-export const CHARACTER_ADD = 'font:character:add';
-export const CHARACTER_REMOVE = 'font:character:remove';
+export const CHARACTERS_ADD = 'font:character:add';
+export const CHARACTERS_REMOVE = 'font:character:remove';
 export const SIZE_SET = 'font:size:set';
 export const PIXEL_SET = 'font:pixel:set';
 
 // action creators
+export function addCharacters(characters = []) {
+	return { type: CHARACTERS_ADD, characters: characters.map(c => c.toString(10)) };
+}
+
+export function removeCharacters(characters = []) {
+	return { type: CHARACTERS_REMOVE, characters: characters.map(c => c.toString(10)) };
+}
+
 export function addCharacter(character = '') {
-	return { type: CHARACTER_ADD, character: character.toString(10) };
+	return addCharacters([character]);
 }
 
 export function removeCharacter(character = '') {
-	return { type: CHARACTER_REMOVE, character: character.toString(10) };
+	return removeCharacters([character]);
 }
 
 export function setSize({
@@ -51,27 +59,27 @@ const initialState = {
 
 export default function fontReducer(state = initialState, action) {
 	switch (action.type) {
-		case CHARACTER_ADD:
+		case CHARACTERS_ADD:
 			return {
 				...state,
 				characters: {
 					...state.characters,
-					[action.character]: {},
+					...action.characters.reduce((result, character) => {
+						result[character] = {};
+						return result;
+					}, {}),
 				},
 			};
-		case CHARACTER_REMOVE:
-			{
-				const {
-					characters: {
-						[action.character]: removedCharacter,
-						...characters,
-					},
-				} = state;
-				return {
-					...state,
-					characters,
-				};
-			}
+		case CHARACTERS_REMOVE:
+			return {
+				...state,
+				characters: Object.entries(state.characters)
+					.filter(([character]) => !action.characters.includes(character))
+					.reduce((result, [character, pixels]) => {
+						result[character] = pixels;
+						return result;
+					}, {}),
+			};
 		case SIZE_SET:
 			{
 				const {
