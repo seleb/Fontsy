@@ -6,6 +6,7 @@ export function positionToString(x, y) {
 // actions
 export const CHARACTERS_ADD = 'font:character:add';
 export const CHARACTERS_REMOVE = 'font:character:remove';
+export const CHARACTERS_REMOVE_ALL = 'font:character:remove_all';
 export const SIZE_SET = 'font:size:set';
 export const PIXELS_SET = 'font:pixel:set';
 export const NAME_SET = 'font:name:set';
@@ -25,6 +26,10 @@ export function addCharacter(character = '') {
 
 export function removeCharacter(character = '') {
 	return removeCharacters([character]);
+}
+
+export function removeAllCharacters() {
+	return { type: CHARACTERS_REMOVE_ALL };
 }
 
 export function setSize({
@@ -89,6 +94,11 @@ export default function fontReducer(state = initialState, action) {
 						result[character] = pixels;
 						return result;
 					}, {}),
+			};
+		case CHARACTERS_REMOVE_ALL:
+			return {
+				...state,
+				characters: {},
 			};
 		case SIZE_SET:
 			{
