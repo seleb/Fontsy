@@ -8,7 +8,7 @@ import Character from './Characters/Character';
 import './Characters.css';
 
 export function Characters({
-	characters,
+	characters = {},
 }) {
 	return (
 		<div className="characters">
