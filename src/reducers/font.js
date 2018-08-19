@@ -150,3 +150,16 @@ export function getHeight({
 }) {
 	return height;
 }
+
+export function getPixelValue({
+	font: {
+		characters = {},
+	} = {},
+}, { character, x, y }) {
+	const {
+		[character]: {
+			[positionToString(x, y)]: value,
+		} = {},
+	} = characters;
+	return !!value;
+}

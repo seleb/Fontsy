@@ -1,7 +1,10 @@
 import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
 
-import { getCharacters, positionToString, setPixel } from "../../../../reducers/font";
+import {
+	getPixelValue,
+	setPixel,
+} from "../../../../reducers/font";
 
 import './Pixel.css';
 
@@ -28,14 +31,8 @@ export function mapStateToProps(state, {
 	x = 0,
 	y = 0,
 }) {
-	const characters = getCharacters(state);
-	const {
-		[character]: {
-			[positionToString(x, y)]: value,
-		} = {},
-	} = characters;
 	return {
-		value,
+		value: getPixelValue(state, { character, x, y }),
 	};
 }
 
