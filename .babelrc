@@ -1,0 +1,11 @@
+{
+	"presets": [
+		"env"
+	],
+	"plugins": [
+		"syntax-dynamic-import",
+		"transform-class-properties",
+		"transform-object-rest-spread",
+		["transform-react-jsx", { "pragma": "h" }]
+	]
+}
