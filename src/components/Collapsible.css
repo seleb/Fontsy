@@ -1,0 +1,24 @@
+.collapsible{
+	flex: none;
+	width: 100%;
+	margin:1px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 0.1em;
+	border: solid 1px black;
+	padding: 0.1em;
+}
+.collapsible>.header{
+	flex: none;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	width: 100%;
+}
+.collapsible>.content{
+	flex: none;
+	padding: 1em;
+	width: 100%;
+}

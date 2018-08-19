@@ -5,7 +5,7 @@ import CharacterSet from './CharacterSets/CharacterSet';
 
 import './CharacterSets.css';
 
-import characterSets from '../../assets/characterSets';
+import characterSets from '../../../assets/characterSets';
 
 export function CharacterSets() {
 	return (

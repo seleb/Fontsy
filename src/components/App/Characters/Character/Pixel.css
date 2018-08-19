@@ -1,7 +1,8 @@
 .pixel{
-	width: 10px;
-	height: 10px;
+	width: 0.5em;
+	height: 0.5em;
 }
+
 .pixel:hover{
 	opacity: 0.5;
 }
