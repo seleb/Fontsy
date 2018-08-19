@@ -10,6 +10,7 @@ export const CHARACTERS_REMOVE_ALL = 'font:character:remove_all';
 export const SIZE_SET = 'font:size:set';
 export const PIXELS_SET = 'font:pixel:set';
 export const NAME_SET = 'font:name:set';
+export const FONT_SET = 'font:set';
 
 // action creators
 export function addCharacters(characters = []) {
@@ -59,6 +60,10 @@ export function setPixel({
 
 export function setName(name) {
 	return { type: NAME_SET, name };
+}
+
+export function setFont({ name, width, height, pixels }) {
+	return { type: FONT_SET, name, width, height, pixels };
 }
 
 
@@ -158,6 +163,14 @@ export default function fontReducer(state = initialState, action) {
 				...state,
 				name: action.name,
 			};
+		case FONT_SET:
+			const actions = [
+				removeAllCharacters(),
+				setName(action.name),
+				setSize(action),
+				setPixels(action.pixels),
+			];
+			return actions.reduce((result, action) => fontReducer(result, action), state);
 		default:
 			return state;
 	}
