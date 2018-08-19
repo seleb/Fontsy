@@ -41,8 +41,8 @@ export class CharacterSet {
 		return (
 			<div class="character-set">
 				<span className="name" title={title}>{title}</span>
-				<button className="button add" title="add all characters in this set" onClick={this.add}>+</button>
-				<button className="button remove" title="remove all characters in this set" onClick={this.remove}>-</button>
+				<button className="button add" title={`add all ${name} characters`} onClick={this.add}>+</button>
+				<button className="button remove" title={`remove all ${name} characters`} onClick={this.remove}>-</button>
 			</div>
 		);
 	}
