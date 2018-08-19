@@ -1,2 +1,42 @@
 .app * {
+	font-family: 'Noto Sans', sans-serif;
+}
+
+.app {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+	background: white;
+	color: black;
+	font-size: 100%;
+}
+.app>main{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* paper overlay */
+
+.app>main {
+	flex: auto;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+
+.app>footer {
+	flex: none;
+	font-size: .8em;
+	padding: 1em 3em;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	opacity: 0.8;
+	font-style: italic;
+	background: black;
+	color: #a59485;
 }

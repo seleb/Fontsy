@@ -1,0 +1,24 @@
+.character-set {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: lightgrey;
+	border-radius: 0.1em;
+	padding: 0.1em;
+}
+
+.character-set>.name {
+	flex: auto;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.character-set>.button {
+	flex: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2em;
+	height: 2em;
+}

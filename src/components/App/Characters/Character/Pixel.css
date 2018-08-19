@@ -1,0 +1,12 @@
+.pixel{
+	width: 10px;
+	height: 10px;
+}
+
+.pixel.zero {
+	background: black;
+}
+
+.pixel.one {
+	background: white;
+}
