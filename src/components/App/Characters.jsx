@@ -10,6 +10,10 @@ import './Characters.css';
 const charactersPerRow = 16;
 const rows = 4;
 
+function getLimit(length) {
+	return Math.max(0, Math.floor((length - 1) / charactersPerRow) - 3);
+}
+
 export class Characters extends Component {
 	constructor() {
 		super();
@@ -32,7 +36,7 @@ export class Characters extends Component {
 		const {
 			characters = [],
 		} = this.props;
-		const limit = Math.max(0, Math.floor(characters.length / charactersPerRow) - 4);
+		const limit = getLimit(characters.length);
 		if (row > limit) {
 			this.setState({
 				row: limit,
