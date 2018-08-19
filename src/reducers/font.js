@@ -8,6 +8,7 @@ export const CHARACTERS_ADD = 'font:character:add';
 export const CHARACTERS_REMOVE = 'font:character:remove';
 export const SIZE_SET = 'font:size:set';
 export const PIXEL_SET = 'font:pixel:set';
+export const NAME_SET = 'font:name:set';
 
 // action creators
 export function addCharacters(characters = []) {
@@ -48,6 +49,11 @@ export function setPixel({
 	return { type: PIXEL_SET, character, x, y, value };
 }
 
+export function setName(name) {
+	return { type: NAME_SET, name };
+}
+
+
 // reducer
 const initialState = {
 	width: 6,
@@ -55,6 +61,7 @@ const initialState = {
 	characters: {
 		10: {},
 	}, // TODO: add bitsy default font
+	name: 'my font',
 };
 
 export default function fontReducer(state = initialState, action) {
@@ -121,6 +128,11 @@ export default function fontReducer(state = initialState, action) {
 					},
 				};
 			}
+		case NAME_SET:
+			return {
+				...state,
+				name: action.name,
+			};
 		default:
 			return state;
 	}
@@ -149,6 +161,14 @@ export function getHeight({
 	} = {},
 }) {
 	return height;
+}
+
+export function getName({
+	font: {
+		name = '',
+	} = {},
+}) {
+	return name;
 }
 
 export function getPixelValue({
