@@ -65,7 +65,7 @@ export default function fontReducer(state = initialState, action) {
 				characters: {
 					...state.characters,
 					...action.characters.reduce((result, character) => {
-						result[character] = {};
+						result[character] = state.characters[character] || {};
 						return result;
 					}, {}),
 				},
