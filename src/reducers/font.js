@@ -1,3 +1,6 @@
+import { textToFont } from '../lib/fontConverter';
+import defaultFont from 'raw-loader!../assets/ascii_small.bitsyfont';
+
 // pixel helpers
 export function positionToString(x, y) {
 	return `${x},${y}`;
@@ -68,14 +71,7 @@ export function setFont({ name, width, height, pixels }) {
 
 
 // reducer
-const initialState = {
-	width: 6,
-	height: 8,
-	characters: {
-		10: {},
-	}, // TODO: add bitsy default font
-	name: 'my font',
-};
+const initialState = fontReducer({}, setFont(textToFont(defaultFont)));
 
 export default function fontReducer(state = initialState, action) {
 	switch (action.type) {
