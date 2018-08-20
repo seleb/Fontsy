@@ -48,10 +48,10 @@ export function setSize({
 	return { type: SIZE_SET, width, height };
 }
 export function setWidth(width) {
-	return setSize({ width });
+	return setSize({ width: parseInt(width, 10) });
 }
 export function setHeight(height) {
-	return setSize({ height });
+	return setSize({ height: parseInt(height, 10) });
 }
 
 export function setPixels(pixels = []) {

@@ -1,0 +1,18 @@
+.font-size {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+}
+
+.font-size>label {
+	flex: none;
+	margin-right: 0.5em;
+}
+
+.font-size>input {
+	text-align: center;
+	max-width: 5em;
+	flex: auto;
+}

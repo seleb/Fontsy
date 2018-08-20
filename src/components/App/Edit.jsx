@@ -7,11 +7,13 @@ import Characters from './Edit/Characters';
 import CharacterSets from './Edit/CharacterSets';
 import Collapsible from '../Collapsible';
 import Reset from './Edit/Reset';
+import FontSize from './Edit/FontSize';
 
 export default function Edit() {
 	return (
 		<div className="edit">
 			<FontName />
+			<FontSize />
 			<Reset />
 			<Collapsible header="Code Points" description="Add/remove individual characters"><AddCharacter /></Collapsible>
 			<Collapsible header="Character Sets" description="Add/remove all characters in set"><CharacterSets /></Collapsible>
