@@ -1,14 +1,22 @@
 .collapsible{
 	flex: none;
 	width: 100%;
-	margin:0.25em;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	border-radius: 0.5em;
 	background: var(--primary);
 	color: var(--text-primary);
 	overflow: hidden;
+}
+.collapsible:first-of-type {
+	margin-top: 0.25em;
+	border-top-left-radius: 0.5em;
+	border-top-right-radius: 0.5em;
+}
+.collapsible:last-of-type {
+	border-bottom-left-radius: 0.5em;
+	border-bottom-right-radius: 0.5em;
+	margin-bottom: 0.25em;
 }
 .collapsible>.header{
 	flex: none;
