@@ -11,9 +11,16 @@ import {
 import { fontToText } from '../../../lib/fontConverter';
 
 export function DataExport({
+	name = '',
 	output = '',
 }) {
-	return <textarea className="data-export" value={output} />;
+	const title = `${name}.bitsyfont`;
+	return (
+		<div className="data-export">
+			<a download={title} href={`data:text/plain;base64,${btoa(output)}`} title={title}>Download</a>
+			<textarea value={output} />
+		</div>
+	);
 }
 
 export function mapStateToProps(state) {
@@ -30,7 +37,8 @@ export function mapStateToProps(state) {
 	});
 
 	return {
-		output
+		name,
+		output,
 	};
 }
 
