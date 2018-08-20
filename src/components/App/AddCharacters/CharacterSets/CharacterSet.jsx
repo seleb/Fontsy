@@ -6,6 +6,8 @@ import {
 	removeCharacters,
 } from '../../../../reducers/font';
 
+import Toggle from '../../../Toggle';
+
 import './CharacterSet.css';
 
 
@@ -41,8 +43,8 @@ export class CharacterSet {
 		return (
 			<div class="character-set">
 				<span className="name" title={title}>{title}</span>
-				<button className="button add" title={`add all ${name} characters`} onClick={this.add}>➕</button>
-				<button className="button remove" title={`remove all ${name} characters`} onClick={this.remove}>➖</button>
+				<Toggle title={`add all ${name} characters`} onClick={this.add}/>
+				<Toggle title={`remove all ${name} characters`} onClick={this.remove} enabled/>
 			</div>
 		);
 	}

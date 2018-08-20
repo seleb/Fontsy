@@ -8,6 +8,7 @@ import {
 	removeCharacter,
 	getCharacters,
 } from '../../../reducers/font';
+import Toggle from '../../Toggle';
 
 export class AddCharacter extends Component {
 	constructor() {
@@ -61,13 +62,13 @@ export class AddCharacter extends Component {
 		return (
 			<main className="add-character">
 				<label for="add-character-input">Unicode Code Point: </label>
-				<input type="number" name="add-character-input" min={0} value={character} onChange={this.onChange}/>
+				<input type="number" name="add-character-input" min={0} value={character} onChange={this.onChange} />
 				<a href="https://en.wikipedia.org/wiki/List_of_Unicode_characters" target="_blank" rel="noopener noreferrer">❓</a>
-				<button
+				<Toggle
 					title={`${hasCharacter ? 'Remove' : 'Add'} character at code point ${character}`}
-					onClick={hasCharacter ? this.remove : this.add}>
-					{hasCharacter ? '➖' : '➕'}
-				</button>
+					onClick={hasCharacter ? this.remove : this.add}
+					enabled={hasCharacter}
+				/>
 			</main>
 		);
 	}

@@ -1,5 +1,6 @@
 import { h, Component } from 'preact';
 
+import Toggle from './Toggle';
 import './Collapsible.css';
 
 export default class Collapsible extends Component {
@@ -28,7 +29,7 @@ export default class Collapsible extends Component {
 		return (
 			<section className={`collapsible ${open ? 'open' : 'closed'}`}>
 				<header className="header">
-					<button onClick={this.toggleOpen}>{open ? '➖' : '➕'}</button>
+					<Toggle onClick={this.toggleOpen} enabled={open}/>
 					<h1>{header}</h1>
 				</header>
 				{open && <main className="content">
