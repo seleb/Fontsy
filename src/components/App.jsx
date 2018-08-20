@@ -1,6 +1,7 @@
 import { h, Component } from 'preact';
 
 import './App.css';
+import About from './App/About';
 import Import from './App/Import';
 import Edit from './App/Edit';
 import Export from './App/Export';
@@ -20,6 +21,7 @@ export default class App {
 		return (
 			<div class="app">
 				<main>
+					<Collapsible header="About"><About /></Collapsible>
 					<Collapsible header="Import" description="Import .bitsyfont or .png files" open><Import /></Collapsible>
 					<Collapsible header="Edit" description="Add, edit, or remove characters"><Edit /></Collapsible>
 					<Collapsible header="Export" description="Export compiled font" open><Export /></Collapsible>

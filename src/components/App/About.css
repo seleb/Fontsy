@@ -1,0 +1,30 @@
+.about {
+	line-height: 1.3;
+}
+.about p {
+	margin: 1em 0;
+}
+.about>h1{
+	font-size: 2em;
+	font-weight: bold;
+}
+.about>h2 {
+	font-style: italic;
+	font-size: 1.25em;
+}
+
+.about>ul {
+	margin: 1em;
+	list-style-type: disc;
+}
+.about>ol {
+	margin: 1em;
+	list-style-type: decimal;
+}
+
+.about code {
+	font-family: 'Courier New', Courier, monospace;
+	background: var(--secondary);
+	color: var(--text-secondary);
+	border-radius: 0.25em;
+}
