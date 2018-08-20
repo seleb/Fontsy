@@ -38,7 +38,20 @@ export class Characters extends Component {
 	}
 
 	onWheel = event => {
-		(Math.sign(event.deltaY) > 0 ? this.nextPage : this.prevPage)();
+		const {
+			row = 0,
+		} = this.state;
+		const {
+			characters = [],
+		} = this.props;
+		const dir = Math.sign(event.deltaY);
+		if (dir < 0 && row <= 0) {
+			return;
+		}
+		if (dir > 0 && row >= getLimit(characters.length)) {
+			return;
+		}
+		(dir > 0 ? this.nextPage : this.prevPage)();
 		event.preventDefault();
 	}
 
