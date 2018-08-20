@@ -22,7 +22,7 @@ export default class App {
 				<main>
 					<Collapsible header="Add Characters" description="Add/remove characters"><AddCharacters /></Collapsible>
 					<Collapsible header="Edit Characters" description="Edit character pixels (note: this editor is very basic; it's recommended you export, make changes in an external image editor, and re-import)"><Characters /></Collapsible>
-					<Collapsible header="Export" description="Export compiled font"><Export /></Collapsible>
+					<Collapsible header="Export" description="Export compiled font" open><Export /></Collapsible>
 				</main>
 				<footer>
 					<h2>Fontsy</h2>

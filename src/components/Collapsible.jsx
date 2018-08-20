@@ -4,10 +4,12 @@ import Toggle from './Toggle';
 import './Collapsible.css';
 
 export default class Collapsible extends Component {
-	constructor() {
+	constructor({
+		open = false,
+	}) {
 		super();
 		this.state = {
-			open: false,
+			open,
 		};
 	}
 
