@@ -1,0 +1,15 @@
+.font-name {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+}
+
+.font-name>label {
+	flex: none;
+	margin-right: 0.5em;
+}
+
+.font-name>input {
+	flex: auto;
+}

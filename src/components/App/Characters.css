@@ -2,12 +2,18 @@
 	display: flex;
 	flex-direction: column;
 }
+
 .characters>.characters {
+	background: white;
+	border: solid 1px white;
 	flex: auto;
 	display: grid;
 	grid-gap: 1px;
 	justify-items: center;
 	margin: auto;
+	overflow-x: auto;
+	overflow-y: hidden;
+	max-width: 100%;
 }
 
 .characters>.characters-controls {

@@ -25,7 +25,7 @@ export class FontName {
 	}) {
 		return (
 			<div className="font-name">
-				<label for="font-name">Font name</label>
+				<label for="font-name">Font name: </label>
 				<input type="text" name="font-name" value={name} onChange={this.onChange} />
 			</div>
 		);

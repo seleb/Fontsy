@@ -32,7 +32,7 @@ export default class Collapsible extends Component {
 					<h1>{header}</h1>
 				</header>
 				{open && <main className="content">
-					<h2>{description}</h2>
+					<h2 className="description">{description}</h2>
 					{children}
 				</main>}
 			</section>

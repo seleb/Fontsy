@@ -26,6 +26,8 @@ export default class App {
 				</main>
 				<footer>
 					<h2>Fontsy</h2>
+					<a href="https://ledoux.itch.io/bitsy">Bitsy Game Maker</a>
+					<a href="https://twitter.com/SeanSLeBlanc">Contact</a>
 				</footer>
 			</div>
 		);

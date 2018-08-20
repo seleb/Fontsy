@@ -2,6 +2,18 @@
 
 /* layout */
 
+:root {
+	--primary:   #82A3DD;
+	--secondary: #4D89DB;
+	--tertiary:  #c0ddf7;
+	--accent:    #C4D2F5;
+	--bg:        #edf0f7;
+	--text-primary: rgb(215, 228, 245);
+	--text-secondary: rgb(236, 232, 255);
+	--text-tertiary: rgb(55, 67, 103);
+	--text-accent: rgba(244, 244, 237, 1);
+}
+
 html,
 body {
 	padding: 0;
@@ -31,7 +43,7 @@ body {
 	font-family: 'Courier New', Courier, monospace;
 }
 
-body > p {
+body>p {
 	width: 3em;
 	white-space: pre;
 }

@@ -1,17 +1,15 @@
 .character-set {
 	display: flex;
 	align-items: center;
-	justify-content: center;
-	background: lightgrey;
+	background: var(--secondary);
+	color: var(--text-secondary);
 	border-radius: 0.1em;
 	padding: 0.1em;
 }
 
 .character-set>.name {
 	flex: auto;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+	font-size: 0.8em;
 }
 
 .character-set>.button {
