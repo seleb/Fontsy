@@ -5,7 +5,7 @@ import './About.css';
 export default function About() {
 	return (
 		<div className="about">
-			<p>With the release of Bitsy 5 came a brand-new font system, which is far more customizable than the old one. Among other features, the new font system includes a spec for a <code>.bitsyfont</code> format which can be used to make custom fonts.</p>
+			<p>With the release of Bitsy 5 came a brand-new font system. The new system is far more customizable than the old one: among other features, it includes a spec for a <code>.bitsyfont</code> format which can be used to make custom fonts.</p>
 			<p>Since the format is plaintext, it's relatively easy to make custom fonts by typing them out in a text editor, but from a creative perspective, it's a bit hard to draw characters that way. To help with this, Fontsy provides a way to convert back-and-forth between <code>.bitsyfont</code> and <code>.bitsyfont.png</code> files, which can be used to draw fonts in a more traditional image editor.</p>
 			<p>Notes:</p>
 			<ul>
