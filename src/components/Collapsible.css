@@ -11,9 +11,9 @@
 	overflow: hidden;
 }
 .collapsible>.header{
+	flex: none;
 	background: var(--secondary);
 	color: var(--text-secondary);
-	flex: none;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -27,7 +27,12 @@
 	width: 100%;
 	overflow: auto;
 }
-.collapsible>.content>.description{
+.collapsible>.header>.name{
+	flex: none;
+	white-space: nowrap;
+}
+.collapsible>.header>.description{
+	flex: auto;
 	font-style: italic;
 	font-size: 0.8em;
 	margin: 0.5em;

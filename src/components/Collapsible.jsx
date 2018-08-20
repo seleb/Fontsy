@@ -32,10 +32,9 @@ export default class Collapsible extends Component {
 			<section className={`collapsible ${open ? 'open' : 'closed'}`}>
 				<header className="header">
 					<Toggle onClick={this.toggleOpen} enabled={open}/>
-					<h1>{header}</h1>
+					<h1 className="name">{header}</h1><h2 className="description">{description}</h2>
 				</header>
 				{open && <main className="content">
-					<h2 className="description">{description}</h2>
 					{children}
 				</main>}
 			</section>
