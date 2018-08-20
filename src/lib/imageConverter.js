@@ -103,8 +103,14 @@ export function fontToImage({
 	characters = [],
 }) {
 	const sqrt = Math.sqrt(characters.length);
-	const charactersPerRow = Math.floor(sqrt);
-	const charactersPerCol = Math.ceil(sqrt);
+	let charactersPerRow = Math.floor(sqrt);
+	let charactersPerCol = charactersPerRow;
+	if (charactersPerRow * charactersPerCol < characters.length) {
+		charactersPerRow += 1;
+	}
+	if (charactersPerRow * charactersPerCol < characters.length) {
+		charactersPerCol += 1;
+	}
 
 	const canvas = document.createElement('canvas');
 	const context = canvas.getContext('2d');
