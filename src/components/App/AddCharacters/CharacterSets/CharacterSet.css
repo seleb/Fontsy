@@ -1,8 +1,8 @@
 .character-set {
 	display: flex;
 	align-items: center;
-	background: var(--secondary);
-	color: var(--text-secondary);
+	background: var(--primary);
+	color: var(--text-primary);
 	border-radius: 0.1em;
 	padding: 0.1em;
 }
@@ -10,13 +10,4 @@
 .character-set>.name {
 	flex: auto;
 	font-size: 0.8em;
-}
-
-.character-set>.button {
-	flex: none;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 2em;
-	height: 2em;
 }

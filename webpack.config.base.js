@@ -33,7 +33,7 @@ module.exports = {
 				}
 			]
 		}, {
-			test: /\.(png|woff)$/, // assets
+			test: /\.(png|svg)$/, // assets
 			use: {
 				loader: 'url-loader',
 				options: {

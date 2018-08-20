@@ -8,7 +8,7 @@ export default function Toggle({
 	title = '',
 }) {
 	return (
-		<button onClick={onClick} title={title} className={`button ${enabled ? 'on' : 'off'}`}>
+		<button onClick={onClick} title={title} className={`button toggle ${enabled ? 'on' : 'off'}`}>
 			{enabled ? '➖' : '➕'}
 		</button>
 	);

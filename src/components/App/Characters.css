@@ -23,12 +23,3 @@
 	align-items: center;
 	justify-content: center;
 }
-
-.characters>.characters-controls>.button {
-	flex: none;
-	width: 2em;
-	height: 2em;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
