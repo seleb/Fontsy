@@ -4,7 +4,7 @@ import { connect } from 'preact-redux';
 import {
 	getPixelValue,
 	setPixel,
-} from "../../../../reducers/font";
+} from "../../../../../reducers/font";
 
 import './Pixel.css';
 

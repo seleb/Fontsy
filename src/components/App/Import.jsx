@@ -1,14 +1,14 @@
 import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
 
-import { imageToFont } from '../../../lib/imageConverter';
-import { textToFont } from '../../../lib/fontConverter';
+import { imageToFont } from '../../lib/imageConverter';
+import { textToFont } from '../../lib/fontConverter';
 
-import { setFont } from '../../../reducers/font';
+import { setFont } from '../../reducers/font';
 
-import './ImportFont.css';
+import './Import.css';
 
-export class ImportFont extends Component {
+export class Import extends Component {
 	onChange = ({
 		currentTarget: {
 			files: {
@@ -50,7 +50,6 @@ export class ImportFont extends Component {
 		height = 0,
 	}) {
 		return <input type="file" name="file" accept=".png, .bitsyfont" onChange={this.onChange} />
-		// return <button onClick={this.import}>import</button>;
 	}
 }
 
@@ -58,4 +57,4 @@ export const mapDispatchToProps = {
 	setFont,
 }
 
-export default connect(undefined, mapDispatchToProps)(ImportFont);
+export default connect(undefined, mapDispatchToProps)(Import);

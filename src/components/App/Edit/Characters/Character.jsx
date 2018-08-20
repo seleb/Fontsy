@@ -1,7 +1,7 @@
 import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
 
-import { getWidth, getHeight } from '../../../reducers/font';
+import { getWidth, getHeight } from '../../../../reducers/font';
 
 import Pixel from './Character/Pixel';
 
@@ -13,8 +13,8 @@ export function Character({
 	height = 0,
 }) {
 	const pixels = [];
-	for(let y = 0; y < height; ++y) {
-		for(let x = 0; x < width; ++x) {
+	for (let y = 0; y < height; ++y) {
+		for (let x = 0; x < width; ++x) {
 			pixels.push(<Pixel key={`${character},${x},${y}`} character={character} x={x} y={y} />);
 		}
 	}
@@ -30,7 +30,7 @@ export function Character({
 	);
 }
 
-export function mapStateToProps(state){
+export function mapStateToProps(state) {
 	return {
 		width: getWidth(state),
 		height: getHeight(state),

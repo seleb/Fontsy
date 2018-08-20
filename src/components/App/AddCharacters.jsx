@@ -1,9 +1,9 @@
 import { h, Component } from 'preact';
 
 import Collapsible from '../Collapsible';
-import ImportFont from './AddCharacters/ImportFont';
+import ImportFont from './Import';
 import AddCharacter from './AddCharacters/AddCharacter';
-import CharacterSets from './AddCharacters/CharacterSets';
+import CharacterSets from './Edit/CharacterSets';
 
 import './AddCharacters.css';
 

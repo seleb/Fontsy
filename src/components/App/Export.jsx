@@ -1,7 +1,6 @@
 import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
 
-import FontName from './Export/FontName';
 import DataExport from './Export/DataExport';
 import ImageExport from './Export/ImageExport';
 import Collapsible from '../Collapsible';
@@ -13,9 +12,8 @@ export function Export({
 }) {
 	return (
 		<div className="export">
-			<FontName />
-			<Collapsible header="Data" description="Export font as bitsy font data"><DataExport /></Collapsible>
-			<Collapsible header="Image" description="Export font as PNG for editing in external program"><ImageExport /></Collapsible>
+			<Collapsible header="Data" description="Font in .bitsyfont format"><DataExport /></Collapsible>
+			<Collapsible header="Image" description="Font as .bitsyfont.png for editing in external program"><ImageExport /></Collapsible>
 		</div>
 	);
 }

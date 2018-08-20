@@ -1,7 +1,7 @@
 import { h, Component } from 'preact';
 import { connect } from 'preact-redux';
 
-import { getCharacters } from '../../reducers/font';
+import { getCharacters } from '../../../reducers/font';
 
 import Character from './Characters/Character';
 

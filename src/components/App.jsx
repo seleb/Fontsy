@@ -1,8 +1,8 @@
 import { h, Component } from 'preact';
 
 import './App.css';
-import AddCharacters from './App/AddCharacters';
-import Characters from './App/Characters';
+import Import from './App/Import';
+import Edit from './App/Edit';
 import Export from './App/Export';
 import Collapsible from './Collapsible';
 
@@ -20,8 +20,8 @@ export default class App {
 		return (
 			<div class="app">
 				<main>
-					<Collapsible header="Add Characters" description="Add/remove characters"><AddCharacters /></Collapsible>
-					<Collapsible header="Edit Characters" description="Edit character pixels (note: this editor is very basic; it's recommended you export, make changes in an external image editor, and re-import)"><Characters /></Collapsible>
+					<Collapsible header="Import" description="Import .bitsyfont or .png files" open><Import /></Collapsible>
+					<Collapsible header="Edit" description="Add, edit, or remove characters"><Edit /></Collapsible>
 					<Collapsible header="Export" description="Export compiled font" open><Export /></Collapsible>
 				</main>
 				<footer>
