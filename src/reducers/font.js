@@ -15,6 +15,7 @@ export const SIZE_SET = 'font:size:set';
 export const PIXELS_SET = 'font:pixel:set';
 export const NAME_SET = 'font:name:set';
 export const FONT_SET = 'font:set';
+export const FONT_MERGE = 'font:merge';
 
 // action creators
 export function addCharacters(characters = []) {
@@ -72,6 +73,10 @@ export function setName(name) {
 
 export function setFont({ name, width, height, pixels }) {
 	return { type: FONT_SET, name, width, height, pixels };
+}
+
+export function mergeFont({ name, width, height, pixels }) {
+	return { type: FONT_MERGE, name, width, height, pixels };
 }
 
 
@@ -173,13 +178,16 @@ export default function fontReducer(state = initialState, action) {
 				name: action.name,
 			};
 		case FONT_SET:
-			const actions = [
+			return [
 				removeAllCharacters(),
 				setName(action.name),
+				mergeFont(action),
+			].reduce((result, action) => fontReducer(result, action), state);
+		case FONT_MERGE:
+			return [
 				setSize(action),
 				setPixels(action.pixels),
-			];
-			return actions.reduce((result, action) => fontReducer(result, action), state);
+			].reduce((result, action) => fontReducer(result, action), state);
 		default:
 			return state;
 	}
