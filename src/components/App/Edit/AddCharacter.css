@@ -1,0 +1,18 @@
+.add-character {
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+	justify-content: center;
+	justify-items: flex-end;
+	align-items: center;
+	grid-gap: 1em;
+}
+
+.add-character>input {
+	flex: auto;
+	width: 100%;
+	text-align: center;
+}
+
+.add-character>a {
+	justify-self: center;
+}
