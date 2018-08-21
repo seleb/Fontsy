@@ -1,0 +1,13 @@
+.import {
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+	justify-content: center;
+	justify-items: flex-end;
+	align-items: center;
+	grid-gap: 1em;
+}
+
+.import>.file-input {
+	grid-column-start: 2;
+	grid-column-end: 4;
+}
