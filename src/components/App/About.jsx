@@ -14,6 +14,7 @@ export default function About() {
 				<li>Font data is 1-bit (i.e. black and white)</li>
 				<li>The images used for the old custom font hack are not compatible with Fontsy</li>
 				<li>If you're using the built-in editor, keep the export section closed to improve performance</li>
+				<li>Hover over characters in built-in editor to see code points</li>
 			</ul>
 			<p>Recommended workflow:</p>
 			<ol>
