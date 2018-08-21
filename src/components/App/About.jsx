@@ -22,7 +22,7 @@ export default function About() {
 				<li>Import <code>.bitsyfont</code> file</li>
 				<li>If needed, make minor edits using the built-in editor (e.g. changing size, name, or adding characters)</li>
 				<li>Export <code>.bitsyfont.png</code> image</li>
-				<li>Open image in external editor and customize font (note: make sure not to edit the borders)</li>
+				<li>Open image in external editor and customize font (note: make sure not to edit the borders, and to export in a mode which doesn't affect colours)</li>
 				<li>Import edited <code>.bitsyfont.png</code> image</li>
 				<li>Export <code>.bitsyfont</code> file</li>
 			</ol>
