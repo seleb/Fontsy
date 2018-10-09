@@ -44,7 +44,7 @@ export class Import extends Component {
 					name: file.name.split(/(\.bitsyfont)?\.png/)[0],
 				}));
 			} else if (file.name.toLowerCase().endsWith('.bitsyfont')) {
-				getFont = () => Promise.resolve(textToFont(atob(result.substr(13))));
+				getFont = () => Promise.resolve(textToFont(atob(result.match(/.*base64,([^]+)/)[1])));
 			} else {
 				throw new Error('Unsupported file type');
 			}
