@@ -13,7 +13,7 @@ export function rgbToInt({ r = 0, g = 0, b = 0 }) {
 }
 
 export function imageToFont(src) {
-	return new Promise(resolve => {
+	return new Promise((resolve, reject) => {
 		const img = new Image();
 		img.onload = () => {
 			// convert into readable format
@@ -61,7 +61,8 @@ export function imageToFont(src) {
 			}
 
 			if (!charWidth || !charHeight) {
-				throw new Error('Couldn\'t get character width/height');
+				reject(new Error('Couldn\'t get character width/height'));
+				return;
 			}
 
 			// get characters/pixels
