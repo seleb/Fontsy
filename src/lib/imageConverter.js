@@ -17,8 +17,8 @@ export function imageToFont(src) {
 		const img = new Image();
 		img.onload = () => {
 			// convert into readable format
-			const width = img.width;
-			const height = img.height;
+			const width = img.naturalWidth;
+			const height = img.naturalHeight;
 
 			const canvas = document.createElement('canvas');
 			const context = canvas.getContext('2d');
