@@ -1,4 +1,4 @@
-FONT ascii_small
+export default `FONT ascii_small
 SIZE 6 8
 CHAR 0
 000000
@@ -2303,4 +2303,4 @@ CHAR 255
 111111
 010010
 000000
-000000
+000000`;

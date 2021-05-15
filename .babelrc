@@ -1,11 +1,5 @@
 {
-	"presets": [
-		"@babel/env"
-	],
-	"plugins": [
-		"syntax-dynamic-import",
-		"transform-class-properties",
-		"transform-object-rest-spread",
-		["transform-react-jsx", { "pragma": "h" }]
-	]
+  "plugins": [
+    "@babel/plugin-proposal-class-properties"
+  ]
 }

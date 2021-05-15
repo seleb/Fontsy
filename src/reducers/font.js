@@ -1,5 +1,5 @@
+import defaultFont from '../assets/ascii_small';
 import { textToFont } from '../lib/fontConverter';
-import defaultFont from 'raw-loader!../assets/ascii_small.bitsyfont';
 
 // pixel helpers
 export function positionToString(x, y) {
