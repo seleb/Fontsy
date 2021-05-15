@@ -43,7 +43,6 @@ export class Import extends Component {
 					...result,
 					name: file.name.split(/(\.bitsyfont)?\.png/)[0],
 				})).catch(err => {
-					console.log('If you are using Firefox, make sure to remove any colour profiles before trying to import an image.');
 					window.alert('Failed to import image; see console for details.');
 					throw err;
 				});
