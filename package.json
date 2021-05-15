@@ -19,6 +19,7 @@
 	},
 	"dependencies": {
 		"babel-polyfill": "^6.26.0",
+		"just-give-me-the-pixels": "^1.0.2",
 		"preact": "^8.5.3",
 		"preact-context": "^1.1.4",
 		"preact-redux": "^2.1.0",
