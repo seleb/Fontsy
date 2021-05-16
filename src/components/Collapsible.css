@@ -27,7 +27,8 @@
 	width: 100%;
 	padding: 0.5em;
 }
-.collapsible>summary:hover {
+.collapsible>summary:hover,
+.collapsible>summary:focus {
 	filter: brightness(1.1);
 }
 .collapsible>summary::before {
