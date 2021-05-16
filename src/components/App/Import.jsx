@@ -12,33 +12,26 @@ export function Import() {
 	const setFont = useCallback((...args) => dispatch(actionSetFont(...args)));
 	const mergeFont = useCallback((...args) => dispatch(actionMergeFont(...args)));
 	const [merge, setMerge] = useState(false);
-	const onChange = useCallback(({
-		currentTarget: {
-			files: {
-				0: file,
-			} = [],
-		} = {}
-	}) => {
+	const onChange = useCallback(({ currentTarget: { files: { 0: file } = [] } = {} }) => {
 		if (!file) {
 			return;
 		}
 
 		const reader = new FileReader();
 
-		reader.onload = ({
-			target: {
-				result = '',
-			} = {},
-		}) => {
+		reader.onload = ({ target: { result = '' } = {} }) => {
 			let getFont;
 			if (file.type === 'image/png') {
-				getFont = () => imageToFont(result).then(result => ({
-					...result,
-					name: file.name.split(/(\.bitsyfont)?\.png/)[0],
-				})).catch(err => {
-					window.alert('Failed to import image; see console for details.');
-					throw err;
-				});
+				getFont = () =>
+					imageToFont(result)
+						.then((result) => ({
+							...result,
+							name: file.name.split(/(\.bitsyfont)?\.png/)[0],
+						}))
+						.catch((err) => {
+							window.alert('Failed to import image; see console for details.');
+							throw err;
+						});
 			} else if (file.name.toLowerCase().endsWith('.bitsyfont')) {
 				getFont = () => Promise.resolve(textToFont(atob(result.match(/.*base64,([^]+)/)[1])));
 			} else {

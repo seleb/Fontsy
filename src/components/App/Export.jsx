@@ -8,8 +8,12 @@ import ImageExport from './Export/ImageExport';
 export function Export() {
 	return (
 		<div className="export">
-			<Collapsible header="Data" description="Font in .bitsyfont format"><DataExport /></Collapsible>
-			<Collapsible header="Image" description="Font as .bitsyfont.png for editing in external program"><ImageExport /></Collapsible>
+			<Collapsible header="Data" description="Font in .bitsyfont format">
+				<DataExport />
+			</Collapsible>
+			<Collapsible header="Image" description="Font as .bitsyfont.png for editing in external program">
+				<ImageExport />
+			</Collapsible>
 		</div>
 	);
 }

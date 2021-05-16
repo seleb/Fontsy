@@ -31,13 +31,16 @@ export function Characters() {
 		}
 		return false;
 	}, [row]);
-	const onWheel = useCallback((event) => {
-		const dir = Math.sign(event.deltaY);
-		const changed = (dir > 0 ? nextPage : prevPage)();
-		if (changed) {
-			event.preventDefault();
-		}
-	}, [nextPage, prevPage]);
+	const onWheel = useCallback(
+		(event) => {
+			const dir = Math.sign(event.deltaY);
+			const changed = (dir > 0 ? nextPage : prevPage)();
+			if (changed) {
+				event.preventDefault();
+			}
+		},
+		[nextPage, prevPage]
+	);
 	useEffect(() => {
 		const limit = limit;
 		if (row > limit) {
@@ -50,14 +53,20 @@ export function Characters() {
 	return (
 		<main className="characters">
 			<nav className="characters-controls">
-				<button className="button prev" onClick={prevPage}>&lt;</button>
+				<button className="button prev" onClick={prevPage}>
+					&lt;
+				</button>
 				{row + 1}/{limit + 1}
-				<button className="button next" onClick={nextPage}>&gt;</button>
+				<button className="button next" onClick={nextPage}>
+					&gt;
+				</button>
 			</nav>
 			<div className="characters" style={style} onWheel={onWheel}>
 				{Object.keys(characters)
 					.slice(row * charactersPerRow, (row + rows) * charactersPerRow)
-					.map(character => <Character key={character} character={character} />)}
+					.map((character) => (
+						<Character key={character} character={character} />
+					))}
 			</div>
 		</main>
 	);

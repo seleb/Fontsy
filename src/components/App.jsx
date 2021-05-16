@@ -11,10 +11,18 @@ export default function App() {
 	return (
 		<div class="app">
 			<main>
-				<Collapsible header="About"><About /></Collapsible>
-				<Collapsible header="Import" description="Import .bitsyfont or .png files" open><Import /></Collapsible>
-				<Collapsible header="Edit" description="Add, edit, or remove characters"><Edit /></Collapsible>
-				<Collapsible header="Export" description="Export compiled font" open><Export /></Collapsible>
+				<Collapsible header="About">
+					<About />
+				</Collapsible>
+				<Collapsible header="Import" description="Import .bitsyfont or .png files" open>
+					<Import />
+				</Collapsible>
+				<Collapsible header="Edit" description="Add, edit, or remove characters">
+					<Edit />
+				</Collapsible>
+				<Collapsible header="Export" description="Export compiled font" open>
+					<Export />
+				</Collapsible>
 			</main>
 			<footer>
 				<h2>Fontsy</h2>

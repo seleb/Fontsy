@@ -5,10 +5,6 @@ import reducers from './reducers';
 
 const initialState = {};
 
-const store = createStore(
-	reducers,
-	initialState,
-	composeWithDevTools(applyMiddleware(...middleware)),
-);
+const store = createStore(reducers, initialState, composeWithDevTools(applyMiddleware(...middleware)));
 
 export default store;

@@ -7,10 +7,9 @@ import CharacterSet from './CharacterSets/CharacterSet';
 export function CharacterSets() {
 	return (
 		<div className="character-sets">
-			{
-				Object.entries(characterSets).map(([name, { start = 0, end = 0 }]) =>
-					<CharacterSet name={name} start={start} end={end} />)
-			}
+			{Object.entries(characterSets).map(([name, { start = 0, end = 0 }]) => (
+				<CharacterSet name={name} start={start} end={end} />
+			))}
 		</div>
 	);
 }

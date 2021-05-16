@@ -19,11 +19,11 @@ export const FONT_MERGE = 'font:merge';
 
 // action creators
 export function addCharacters(characters = []) {
-	return { type: CHARACTERS_ADD, characters: characters.map(c => c.toString(10)) };
+	return { type: CHARACTERS_ADD, characters: characters.map((c) => c.toString(10)) };
 }
 
 export function removeCharacters(characters = []) {
-	return { type: CHARACTERS_REMOVE, characters: characters.map(c => c.toString(10)) };
+	return { type: CHARACTERS_REMOVE, characters: characters.map((c) => c.toString(10)) };
 }
 
 export function addCharacter(character = '') {
@@ -42,10 +42,7 @@ export function clearAllCharacters() {
 	return { type: CHARACTERS_CLEAR_ALL };
 }
 
-export function setSize({
-	width,
-	height,
-}) {
+export function setSize({ width, height }) {
 	return { type: SIZE_SET, width, height };
 }
 export function setWidth(width) {
@@ -58,12 +55,7 @@ export function setHeight(height) {
 export function setPixels(pixels = []) {
 	return { type: PIXELS_SET, pixels };
 }
-export function setPixel({
-	character = '',
-	x = 0,
-	y = 0,
-	value = false,
-}) {
+export function setPixel({ character = '', x = 0, y = 0, value = false }) {
 	return setPixels([{ character, x, y, value }]);
 }
 
@@ -78,7 +70,6 @@ export function setFont({ name, width, height, pixels }) {
 export function mergeFont({ name, width, height, pixels }) {
 	return { type: FONT_MERGE, name, width, height, pixels };
 }
-
 
 // reducer
 const initialState = fontReducer({}, setFont(textToFont(defaultFont)));
@@ -119,130 +110,76 @@ export default function fontReducer(state = initialState, action) {
 					return result;
 				}, {}),
 			};
-		case SIZE_SET:
-			{
-				const {
-					width = state.width,
-						height = state.height,
-				} = action;
-				return {
-					...state,
-					width,
-					height,
+		case SIZE_SET: {
+			const { width = state.width, height = state.height } = action;
+			return {
+				...state,
+				width,
+				height,
+			};
+		}
+		case PIXELS_SET: {
+			const newCharacters = action.pixels.reduce((result, { character = '' }) => {
+				const { characters: { [character]: oldCharacter = {} } = {} } = state;
+				result[character] = {
+					...oldCharacter,
 				};
-			}
-		case PIXELS_SET:
-			{
-				const newCharacters = action.pixels.reduce((result, {
-					character = '',
-				}) => {
-					const {
-						characters: {
-							[character]: oldCharacter = {},
-						} = {},
-					} = state;
-					result[character] = {
-						...oldCharacter,
-					};
-					return result;
-				}, {});
-				action.pixels.reduce((result, {
-					character = '',
-					x = 0,
-					y = 0,
-					value = false,
-				}) => {
-					result[character][positionToString(x, y)] = value;
-					return result;
-				}, newCharacters);
-				const {
-					character,
-					x,
-					y,
-					value,
-				} = action;
-				const {
-					characters: oldCharacters = {},
-				} = state;
-				return {
-					...state,
-					characters: {
-						...oldCharacters,
-						...newCharacters,
-					},
-				};
-			}
+				return result;
+			}, {});
+			action.pixels.reduce((result, { character = '', x = 0, y = 0, value = false }) => {
+				result[character][positionToString(x, y)] = value;
+				return result;
+			}, newCharacters);
+			const { character, x, y, value } = action;
+			const { characters: oldCharacters = {} } = state;
+			return {
+				...state,
+				characters: {
+					...oldCharacters,
+					...newCharacters,
+				},
+			};
+		}
 		case NAME_SET:
 			return {
 				...state,
 				name: action.name,
 			};
 		case FONT_SET:
-			return [
-				removeAllCharacters(),
-				setName(action.name),
-				mergeFont(action),
-			].reduce((result, action) => fontReducer(result, action), state);
+			return [removeAllCharacters(), setName(action.name), mergeFont(action)].reduce((result, action) => fontReducer(result, action), state);
 		case FONT_MERGE:
-			return [
-				setSize(action),
-				setPixels(action.pixels),
-			].reduce((result, action) => fontReducer(result, action), state);
+			return [setSize(action), setPixels(action.pixels)].reduce((result, action) => fontReducer(result, action), state);
 		default:
 			return state;
 	}
 }
 
 // selectors
-export function getCharacters({
-	font: {
-		characters = {},
-	} = {},
-}) {
+export function getCharacters({ font: { characters = {} } = {} }) {
 	return characters;
 }
 
-export function getWidth({
-	font: {
-		width = 0,
-	} = {},
-}) {
+export function getWidth({ font: { width = 0 } = {} }) {
 	return width;
 }
 
-export function getHeight({
-	font: {
-		height = 0,
-	} = {},
-}) {
+export function getHeight({ font: { height = 0 } = {} }) {
 	return height;
 }
 
-export function getName({
-	font: {
-		name = '',
-	} = {},
-}) {
+export function getName({ font: { name = '' } = {} }) {
 	return name;
 }
 
-export function getPixelValue({
-	font: {
-		characters = {},
-	} = {},
-}, { character, x, y }) {
-	const {
-		[character]: {
-			[positionToString(x, y)]: value,
-		} = {},
-	} = characters;
+export function getPixelValue({ font: { characters = {} } = {} }, { character, x, y }) {
+	const { [character]: { [positionToString(x, y)]: value } = {} } = characters;
 	return !!value;
 }
 
 export function getCharactersWithPixels(state) {
 	const width = getWidth(state);
 	const height = getHeight(state);
-	return Object.keys(getCharacters(state)).map(character => {
+	return Object.keys(getCharacters(state)).map((character) => {
 		// character
 		const pixels = [];
 		for (let y = 0; y < height; ++y) {

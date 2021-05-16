@@ -9,18 +9,10 @@ export function FontSize() {
 	const width = useSelector(getWidth);
 	const height = useSelector(getHeight);
 	const dispatch = useDispatch();
-	const onWidthChange = useCallback(({
-		currentTarget: {
-			value = '',
-		} = {},
-	}) => {
+	const onWidthChange = useCallback(({ currentTarget: { value = '' } = {} }) => {
 		dispatch(setWidth(value));
 	}, []);
-	const onHeightChange = useCallback(({
-		currentTarget: {
-			value = '',
-		} = {},
-	}) => {
+	const onHeightChange = useCallback(({ currentTarget: { value = '' } = {} }) => {
 		dispatch(setHeight(value));
 	}, []);
 	return (

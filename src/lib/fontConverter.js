@@ -7,10 +7,7 @@ export function textToFont(sourceText) {
 	const name = lines[0].split('FONT ')[1];
 
 	// get width/height
-	const {
-		1: width = 0,
-		2: height = 0,
-	} = lines[1].split(' ').map(s => parseInt(s, 10));
+	const { 1: width = 0, 2: height = 0 } = lines[1].split(' ').map((s) => parseInt(s, 10));
 
 	// get characters/pixels
 	const characters = [];
@@ -39,19 +36,13 @@ export function textToFont(sourceText) {
 	};
 }
 
-export function fontToText({
-	name = '',
-	width = 0,
-	height = 0,
-	characters = [],
-}) {
+export function fontToText({ name = '', width = 0, height = 0, characters = [] }) {
 	return `FONT ${name}
 SIZE ${width} ${height}
-${
-characters.map(({
-	character = '',
-	pixels = [],
-}) => (`CHAR ${character}
-${pixels.map(row=>row.map(pixel=>pixel ? '1': '0').join('')).join('\n')}`)
-).join('\n')}`;
+${characters
+	.map(
+		({ character = '', pixels = [] }) => `CHAR ${character}
+${pixels.map((row) => row.map((pixel) => (pixel ? '1' : '0')).join('')).join('\n')}`
+	)
+	.join('\n')}`;
 }

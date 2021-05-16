@@ -11,8 +11,12 @@ export function Reset() {
 	const clearAllCharacters = useCallback((...args) => dispatch(actionClearAllCharacters(...args)), []);
 	return (
 		<div className="reset">
-			<button className="button clear" onClick={clearAllCharacters}>Clear (erase all characters)</button>
-			<button className="button reset" onClick={removeAllCharacters}>Reset (remove all characters)</button>
+			<button className="button clear" onClick={clearAllCharacters}>
+				Clear (erase all characters)
+			</button>
+			<button className="button reset" onClick={removeAllCharacters}>
+				Reset (remove all characters)
+			</button>
 		</div>
 	);
 }

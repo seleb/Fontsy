@@ -8,12 +8,8 @@ import './FontName.css';
 export function FontName() {
 	const name = useSelector(getName);
 	const dispatch = useDispatch();
-	const onChange = useCallback(({
-		currentTarget: {
-			value = '',
-		} = {},
-	}) => {
-		dispatch(setName(value))
+	const onChange = useCallback(({ currentTarget: { value = '' } = {} }) => {
+		dispatch(setName(value));
 	}, []);
 	return (
 		<div className="font-name">

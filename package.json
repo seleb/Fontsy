@@ -8,13 +8,15 @@
 		"start": "parcel index.html",
 		"build": "npm run build:cleanup && npm run build:parcel",
 		"build:cleanup": "rm -rf .cache && rm -rf dist",
-		"build:parcel": "parcel build index.html -d dist --no-source-maps --public-url ./"
+		"build:parcel": "parcel build index.html -d dist --no-source-maps --public-url ./",
+		"prettier": "prettier \"src/**/*.js?(x)\" --list-different"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.14.2",
 		"autoprefixer": "^9.0.0",
 		"parcel": "1.12.3",
-		"parcel-bundler": "^1.12.5"
+		"parcel-bundler": "^1.12.5",
+		"prettier": "^2.3.0"
 	},
 	"dependencies": {
 		"babel-polyfill": "^6.26.0",
@@ -27,5 +29,10 @@
 	"alias": {
 		"react": "preact/compat",
 		"react-dom": "preact/compat"
+	},
+	"prettier": {
+		"useTabs": true,
+		"singleQuote": true,
+		"printWidth": 160
 	}
 }

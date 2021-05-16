@@ -6,9 +6,7 @@ import { getHeight, getWidth } from '../../../../reducers/font';
 import './Character.css';
 import Pixel from './Character/Pixel';
 
-export function Character({
-	character = '',
-}) {
+export function Character({ character = '' }) {
 	const width = useSelector(getWidth);
 	const height = useSelector(getHeight);
 	const pixels = useMemo(() => {
