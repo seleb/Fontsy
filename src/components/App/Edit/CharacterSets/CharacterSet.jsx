@@ -1,29 +1,40 @@
 /* @jsx h */
 import { h } from 'preact';
-import { useCallback, useMemo } from 'preact/hooks';
-import { useDispatch } from 'react-redux';
-import { addCharacters, removeCharacters } from '../../../../reducers/font';
-import Toggle from '../../../Toggle';
+import { useCallback, useLayoutEffect, useMemo, useRef } from 'preact/hooks';
+import { useDispatch, useSelector } from 'react-redux';
+import { addCharacters, getCharacters, removeCharacters } from '../../../../reducers/font';
 import './CharacterSet.css';
 
 export function CharacterSet({ name = '', start = 0, end = 0 }) {
+	const refInput = useRef();
+	const characters = useSelector(getCharacters);
 	const characterSet = useMemo(() => new Array(end - start).fill(start).map((v, i) => v + i), [start, end]);
 	const dispatch = useDispatch();
-	const add = useCallback(() => {
-		dispatch(addCharacters(characterSet));
-	}, [characterSet]);
-	const remove = useCallback(() => {
-		dispatch(removeCharacters(characterSet));
-	}, [characterSet]);
+	const state = useMemo(() => {
+		if (characterSet.every(i => characters[i])) return 'checked';
+		if (characterSet.some(i => characters[i])) return 'indeterminate';
+		return 'unchecked';
+	}, [characters, characterSet]);
+	const onClick = useCallback(() => {
+		if (state === 'indeterminate' || state === 'unchecked') {
+			dispatch(addCharacters(characterSet));
+		} else {
+			dispatch(removeCharacters(characterSet));
+		}
+	}, [state]);
+	useLayoutEffect(() => {
+		if (refInput.current) {
+			refInput.current.indeterminate = state === 'indeterminate';
+		}
+	}, [state]);
 	const title = `${name} (${end - start})`;
 	return (
-		<div class="character-set">
+		<label class="character-set">
 			<span className="name" title={title}>
 				{title}
 			</span>
-			<Toggle title={`add all ${name} characters`} onClick={add} />
-			<Toggle title={`remove all ${name} characters`} onClick={remove} enabled />
-		</div>
+			<input ref={refInput} type="checkbox" checked={state !== 'unchecked'} onClick={onClick} />
+		</label>
 	);
 }
 
