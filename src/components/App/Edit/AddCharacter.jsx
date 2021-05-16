@@ -3,7 +3,6 @@ import { h } from 'preact';
 import { useCallback, useMemo, useState } from 'preact/hooks';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCharacter, getCharacters, removeCharacter } from '../../../reducers/font';
-import Toggle from '../../Toggle';
 import './AddCharacter.css';
 
 export function AddCharacter() {
@@ -34,7 +33,7 @@ export function AddCharacter() {
 			</a>
 			<label for="add-character-input-string">Unicode Character: </label>
 			<input type="text" name="add-character-input-string" maxLength={1} value={String.fromCodePoint(character)} onChange={onChangeString} />
-			<Toggle title={`${hasCharacter ? 'Remove' : 'Add'} character at code point ${character}`} onClick={hasCharacter ? remove : add} enabled={hasCharacter} />
+			<input type="checkbox" checked={hasCharacter} onClick={hasCharacter ? remove : add} />
 		</main>
 	);
 }
