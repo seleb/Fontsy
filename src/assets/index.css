@@ -3,12 +3,12 @@
 /* layout */
 
 :root {
-	--primary:   #82A3DD;
-	--secondary: #4D89DB;
-	--tertiary:  #c0ddf7;
+	--primary:   #ffffff;
+	--secondary: #526d92;
+	--tertiary:  #d3e4f3;
 	--accent:    #C4D2F5;
 	--bg:        #edf0f7;
-	--text-primary: rgb(215, 228, 245);
+	--text-primary: rgb(0, 0, 0);
 	--text-secondary: rgb(236, 232, 255);
 	--text-tertiary: rgb(55, 67, 103);
 	--text-accent: rgba(244, 244, 237, 1);
