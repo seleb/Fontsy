@@ -4,11 +4,13 @@
 	background: var(--primary);
 	color: var(--text-primary);
 	overflow: hidden;
+	border-top: solid 1px transparent;
 }
 .collapsible:first-of-type {
 	margin-top: 0.25em;
 	border-top-left-radius: 0.5em;
 	border-top-right-radius: 0.5em;
+	border-top: 0;
 }
 .collapsible:last-of-type {
 	border-bottom-left-radius: 0.5em;
