@@ -1,9 +1,6 @@
 .collapsible{
 	flex: none;
 	width: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
 	background: var(--primary);
 	color: var(--text-primary);
 	overflow: hidden;
@@ -18,35 +15,52 @@
 	border-bottom-right-radius: 0.5em;
 	margin-bottom: 0.25em;
 }
-.collapsible>.header{
-	flex: none;
+.collapsible>summary{
+	cursor: pointer;
 	background: var(--secondary);
 	color: var(--text-secondary);
 	display: flex;
-	flex-direction: row;
+	flex-wrap: wrap;
 	align-items: center;
-	justify-content: flex-start;
 	width: 100%;
 	padding: 0.5em;
 }
-.collapsible>.content{
+.collapsible>summary:hover {
+	filter: brightness(1.1);
+}
+.collapsible>summary::before {
+	content: '';
 	flex: none;
+	display: block;
+	width: 2rem;
+	height: 2rem;
+	margin-inline-end: 0.5rem;
+	background-position: center;
+	background-size: 69%;
+	background-repeat: no-repeat;
+	background-image: url('../assets/icon_plus.svg');
+}
+.collapsible[open]>summary::before {
+	background-image: url('../assets/icon_minus.svg');
+}
+
+.collapsible>section{
 	padding: 1em;
 	width: 100%;
 	overflow: auto;
 }
-.collapsible>.header>.name{
+.collapsible>summary>h1{
 	flex: none;
 	white-space: nowrap;
 }
-.collapsible>.header>.description{
+.collapsible>summary>h2{
 	flex: auto;
 	font-style: italic;
 	font-size: 0.8em;
 	margin: 0.5em;
 }
 
-.collapsible>.content .collapsible {
+.collapsible>section .collapsible {
 	background: var(--tertiary);
 	color: var(--text-tertiary);
 }
