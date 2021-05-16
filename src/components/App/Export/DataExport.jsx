@@ -1,19 +1,23 @@
-import { h, Component } from 'preact';
-import { connect } from 'preact-redux';
-
-import './DataExport.css';
-import {
-	getName,
-	getWidth,
-	getHeight,
-	getCharactersWithPixels,
-} from '../../../reducers/font';
+/* @jsx h */
+import { h } from 'preact';
+import { useMemo } from 'preact/hooks';
+import { useSelector } from 'react-redux';
 import { fontToText } from '../../../lib/fontConverter';
+import { getCharactersWithPixels, getHeight, getName, getWidth } from '../../../reducers/font';
+import './DataExport.css';
 
-export function DataExport({
-	name = '',
-	output = '',
-}) {
+export function DataExport() {
+	const name = useSelector(getName);
+	const width = useSelector(getWidth);
+	const height = useSelector(getHeight);
+	const characters = useSelector(getCharactersWithPixels);
+
+	const output = useMemo(() => fontToText({
+		name,
+		width,
+		height,
+		characters,
+	}), [name, width, height, characters]);
 	const title = `${name}.bitsyfont`;
 	return (
 		<div className="data-export">
@@ -23,23 +27,4 @@ export function DataExport({
 	);
 }
 
-export function mapStateToProps(state) {
-	const name = getName(state);
-	const width = getWidth(state);
-	const height = getHeight(state);
-	const characters = getCharactersWithPixels(state);
-
-	const output = fontToText({
-		name,
-		width,
-		height,
-		characters,
-	});
-
-	return {
-		name,
-		output,
-	};
-}
-
-export default connect(mapStateToProps)(DataExport);
+export default DataExport;

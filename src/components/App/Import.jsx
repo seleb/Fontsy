@@ -1,25 +1,18 @@
-import { h, Component } from 'preact';
-import { connect } from 'preact-redux';
-
-import { imageToFont } from '../../lib/imageConverter';
+/* @jsx h */
+import { h } from 'preact';
+import { useCallback, useState } from 'preact/hooks';
+import { useDispatch } from 'react-redux';
 import { textToFont } from '../../lib/fontConverter';
-
-import {
-	setFont,
-	mergeFont,
-} from '../../reducers/font';
-
+import { imageToFont } from '../../lib/imageConverter';
+import { mergeFont as actionMergeFont, setFont as actionSetFont } from '../../reducers/font';
 import './Import.css';
 
-export class Import extends Component {
-	constructor() {
-		super();
-		this.state = {
-			merge: false,
-		};
-	}
-
-	onChange = ({
+export function Import() {
+	const dispatch = useDispatch();
+	const setFont = useCallback((...args) => dispatch(actionSetFont(...args)));
+	const mergeFont = useCallback((...args) => dispatch(actionMergeFont(...args)));
+	const [merge, setMerge] = useState(false);
+	const onChange = useCallback(({
 		currentTarget: {
 			files: {
 				0: file,
@@ -51,52 +44,28 @@ export class Import extends Component {
 			} else {
 				throw new Error('Unsupported file type');
 			}
-			getFont().then(this.state.merge ? this.props.mergeFont : this.props.setFont);
+			getFont().then(merge ? mergeFont : setFont);
 		};
 
 		reader.readAsDataURL(file);
-	}
-
-	setModeMerge = () => {
-		this.setState({
-			merge: true,
-		})
-	}
-
-	setModeReplace = () => {
-		this.setState({
-			merge: false,
-		})
-	}
-
-	render({
-		src = '',
-		width = 0,
-		height = 0,
-	}, {
-		merge = false,
-	}) {
-		return (
-			<div className="import">
-				<label for="file">File: </label>
-				<input className="file-input" type="file" name="file" accept=".png, .bitsyfont" onChange={this.onChange} />
-				<label for="mode">Mode: </label>
-				<label for="merge" onClick={this.setModeMerge} title="Overwrites existing characters in both fonts; leaves characters only in first font intact">
-					Merge
-					<input type="radio" radioGroup="mode" name="merge" value="merge" checked={merge} />
-				</label>
-				<label for="replace" onClick={this.setModeReplace} title="Removes all existing characters">
-					Replace
-					<input type="radio" radioGroup="mode" name="replace" value="replace" checked={!merge} />
-				</label>
-			</div>
-		);
-	}
+	}, []);
+	const setModeMerge = useCallback(() => setMerge(true), []);
+	const setModeReplace = useCallback(() => setMerge(false), []);
+	return (
+		<div className="import">
+			<label for="file">File: </label>
+			<input className="file-input" type="file" name="file" accept=".png, .bitsyfont" onChange={onChange} />
+			<label for="mode">Mode: </label>
+			<label for="merge" onClick={setModeMerge} title="Overwrites existing characters in both fonts; leaves characters only in first font intact">
+				Merge
+				<input type="radio" radioGroup="mode" name="merge" value="merge" checked={merge} />
+			</label>
+			<label for="replace" onClick={setModeReplace} title="Removes all existing characters">
+				Replace
+				<input type="radio" radioGroup="mode" name="replace" value="replace" checked={!merge} />
+			</label>
+		</div>
+	);
 }
 
-export const mapDispatchToProps = {
-	setFont,
-	mergeFont,
-}
-
-export default connect(undefined, mapDispatchToProps)(Import);
+export default Import;

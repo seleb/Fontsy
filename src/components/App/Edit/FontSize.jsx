@@ -1,64 +1,36 @@
-import { h, Component } from 'preact';
-import { connect } from 'preact-redux';
-
+/* @jsx h */
+import { h } from 'preact';
+import { useCallback } from 'preact/hooks';
+import { useDispatch, useSelector } from 'react-redux';
+import { getHeight, getWidth, setHeight, setWidth } from '../../../reducers/font';
 import './FontSize.css';
-import {
-	setWidth,
-	setHeight,
-	getWidth,
-	getHeight,
-} from '../../../reducers/font';
 
-export class FontSize {
-	onWidthChange = ({
+export function FontSize() {
+	const width = useSelector(getWidth);
+	const height = useSelector(getHeight);
+	const dispatch = useDispatch();
+	const onWidthChange = useCallback(({
 		currentTarget: {
 			value = '',
 		} = {},
 	}) => {
-		const {
-			setWidth,
-		} = this.props;
-		if (setWidth) {
-			setWidth(value);
-		}
-	}
-	onHeightChange = ({
+		dispatch(setWidth(value));
+	}, []);
+	const onHeightChange = useCallback(({
 		currentTarget: {
 			value = '',
 		} = {},
 	}) => {
-		const {
-			setHeight,
-		} = this.props;
-		if (setHeight) {
-			setHeight(value);
-		}
-	}
-
-	render({
-		width = 0,
-		height = 0,
-	}) {
-		return (
-			<div className="font-size">
-				<label for="font-width">Width: </label>
-				<input type="number" name="font-width" value={width} onChange={this.onWidthChange} />
-				<label for="font-height">Height: </label>
-				<input type="number" name="font-height" value={height} onChange={this.onHeightChange} />
-			</div>
-		);
-	}
-}
-export function mapStateToProps(state) {
-	return {
-		width: getWidth(state),
-		height: getHeight(state),
-	};
+		dispatch(setHeight(value));
+	}, []);
+	return (
+		<div className="font-size">
+			<label for="font-width">Width: </label>
+			<input type="number" name="font-width" value={width} onChange={onWidthChange} />
+			<label for="font-height">Height: </label>
+			<input type="number" name="font-height" value={height} onChange={onHeightChange} />
+		</div>
+	);
 }
 
-export const mapDispatchToProps = {
-	setWidth,
-	setHeight,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(FontSize);
+export default FontSize;

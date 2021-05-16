@@ -1,4 +1,5 @@
 import 'babel-polyfill';
+import 'preact/debug';
 import './assets/index.css';
 
 // try to auto-focus and make sure the game can be focused with a click if run from an iframe

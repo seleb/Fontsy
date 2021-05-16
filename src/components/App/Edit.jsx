@@ -1,13 +1,14 @@
-import { h, Component } from 'preact';
-
+/* @jsx h */
+import { h } from 'preact';
+import Collapsible from '../Collapsible';
 import './Edit.css';
-import FontName from './Edit/FontName';
 import AddCharacter from './Edit/AddCharacter';
 import Characters from './Edit/Characters';
 import CharacterSets from './Edit/CharacterSets';
-import Collapsible from '../Collapsible';
-import Reset from './Edit/Reset';
+import FontName from './Edit/FontName';
 import FontSize from './Edit/FontSize';
+import Reset from './Edit/Reset';
+
 
 export default function Edit() {
 	return (

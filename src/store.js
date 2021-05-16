@@ -1,8 +1,7 @@
-import { createStore, applyMiddleware } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
-
-import reducers from './reducers';
 import middleware from './middleware';
+import reducers from './reducers';
 
 const initialState = {};
 

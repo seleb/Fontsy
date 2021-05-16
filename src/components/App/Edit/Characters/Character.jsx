@@ -1,23 +1,25 @@
-import { h, Component } from 'preact';
-import { connect } from 'preact-redux';
-
-import { getWidth, getHeight } from '../../../../reducers/font';
-
-import Pixel from './Character/Pixel';
-
+/* @jsx h */
+import { h } from 'preact';
+import { useMemo } from 'preact/hooks';
+import { useSelector } from 'react-redux';
+import { getHeight, getWidth } from '../../../../reducers/font';
 import './Character.css';
+import Pixel from './Character/Pixel';
 
 export function Character({
 	character = '',
-	width = 0,
-	height = 0,
 }) {
-	const pixels = [];
-	for (let y = 0; y < height; ++y) {
-		for (let x = 0; x < width; ++x) {
-			pixels.push(<Pixel key={`${character},${x},${y}`} character={character} x={x} y={y} />);
+	const width = useSelector(getWidth);
+	const height = useSelector(getHeight);
+	const pixels = useMemo(() => {
+		const result = [];
+		for (let y = 0; y < height; ++y) {
+			for (let x = 0; x < width; ++x) {
+				result.push(<Pixel key={`${character},${x},${y}`} character={character} x={x} y={y} />);
+			}
 		}
-	}
+		return result;
+	}, [character]);
 	const style = {
 		gridTemplateRows: `repeat(${height}, 1fr)`,
 		gridTemplateColumns: `repeat(${width}, 1fr)`,
@@ -30,11 +32,4 @@ export function Character({
 	);
 }
 
-export function mapStateToProps(state) {
-	return {
-		width: getWidth(state),
-		height: getHeight(state),
-	};
-}
-
-export default connect(mapStateToProps)(Character);
+export default Character;

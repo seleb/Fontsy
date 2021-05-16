@@ -1,16 +1,14 @@
-import { h, Component } from 'preact';
-import { connect } from 'preact-redux';
-
+/* @jsx h */
+import { h } from 'preact';
+import { useCallback } from 'preact/hooks';
+import { useDispatch } from 'react-redux';
+import { clearAllCharacters as actionClearAllCharacters, removeAllCharacters as actionRemoveAllCharacters } from '../../../reducers/font';
 import './Reset.css';
-import {
-	removeAllCharacters,
-	clearAllCharacters,
-} from '../../../reducers/font';
 
-export function Reset({
-	clearAllCharacters,
-	removeAllCharacters,
-}) {
+export function Reset() {
+	const dispatch = useDispatch();
+	const removeAllCharacters = useCallback((...args) => dispatch(actionRemoveAllCharacters(...args)), []);
+	const clearAllCharacters = useCallback((...args) => dispatch(actionClearAllCharacters(...args)), []);
 	return (
 		<div className="reset">
 			<button className="button clear" onClick={clearAllCharacters}>Clear (erase all characters)</button>
@@ -19,9 +17,4 @@ export function Reset({
 	);
 }
 
-export const mapDispatchToProps = {
-	removeAllCharacters,
-	clearAllCharacters,
-};
-
-export default connect(undefined, mapDispatchToProps)(Reset);
+export default Reset;

@@ -1,11 +1,8 @@
-import { h, Component } from 'preact';
-import { connect } from 'preact-redux';
-
-import CharacterSet from './CharacterSets/CharacterSet';
-
-import './CharacterSets.css';
-
+/* @jsx h */
+import { h } from 'preact';
 import characterSets from '../../../assets/characterSets';
+import './CharacterSets.css';
+import CharacterSet from './CharacterSets/CharacterSet';
 
 export function CharacterSets() {
 	return (
@@ -18,6 +15,4 @@ export function CharacterSets() {
 	);
 }
 
-export const mapDispatchToProps = {};
-
-export default connect(undefined, mapDispatchToProps)(CharacterSets);
+export default CharacterSets;

@@ -1,6 +1,7 @@
-import { h, Component } from 'preact';
-
+/* @jsx h */
+import { h } from 'preact';
 import './About.css';
+
 
 export default function About() {
 	return (

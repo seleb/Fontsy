@@ -1,10 +1,9 @@
-import { Provider, connect } from 'preact-redux';
+/* @jsx h */
 import { h, render } from 'preact';
-
+import { Provider } from 'react-redux';
+import './assets/reset.css';
 import App from './components/App';
 import store from './store';
-
-import './assets/reset.css';
 
 const Main = () => (
 	<Provider store={store}>

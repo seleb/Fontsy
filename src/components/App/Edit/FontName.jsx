@@ -1,44 +1,26 @@
-import { h, Component } from 'preact';
-import { connect } from 'preact-redux';
-
+/* @jsx h */
+import { h } from 'preact';
+import { useCallback } from 'preact/hooks';
+import { useDispatch, useSelector } from 'react-redux';
+import { getName, setName } from '../../../reducers/font';
 import './FontName.css';
-import {
-	getName,
-	setName,
-} from '../../../reducers/font';
 
-export class FontName {
-	onChange = ({
+export function FontName() {
+	const name = useSelector(getName);
+	const dispatch = useDispatch();
+	const onChange = useCallback(({
 		currentTarget: {
 			value = '',
 		} = {},
 	}) => {
-		const {
-			setName,
-		} = this.props;
-		if (setName) {
-			setName(value);
-		}
-	}
-	render({
-		name = '',
-	}) {
-		return (
-			<div className="font-name">
-				<label for="font-name">Font name: </label>
-				<input type="text" name="font-name" value={name} onChange={this.onChange} />
-			</div>
-		);
-	}
-}
-export function mapStateToProps(state) {
-	return {
-		name: getName(state),
-	};
+		dispatch(setName(value))
+	}, []);
+	return (
+		<div className="font-name">
+			<label for="font-name">Font name: </label>
+			<input type="text" name="font-name" value={name} onChange={onChange} />
+		</div>
+	);
 }
 
-export const mapDispatchToProps = {
-	setName,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(FontName);
+export default FontName;

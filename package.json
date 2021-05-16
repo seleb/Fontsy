@@ -14,15 +14,18 @@
 		"@babel/core": "^7.14.2",
 		"autoprefixer": "^9.0.0",
 		"parcel": "1.12.3",
-		"parcel-bundler": "^1.12.5",
-		"redux-devtools-extension": "^2.13.9"
+		"parcel-bundler": "^1.12.5"
 	},
 	"dependencies": {
 		"babel-polyfill": "^6.26.0",
 		"just-give-me-the-pixels": "^1.0.2",
-		"preact": "^8.5.3",
-		"preact-context": "^1.1.4",
-		"preact-redux": "^2.1.0",
-		"redux": "^4.1.0"
+		"preact": "^10.5.13",
+		"react-redux": "^7.2.4",
+		"redux": "^4.1.0",
+		"redux-devtools-extension": "^2.13.9"
+	},
+	"alias": {
+		"react": "preact/compat",
+		"react-dom": "preact/compat"
 	}
 }

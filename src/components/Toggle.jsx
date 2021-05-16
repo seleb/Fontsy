@@ -1,6 +1,7 @@
-import { h, Component } from 'preact';
-
+/* @jsx h */
+import { h } from 'preact';
 import './Toggle.css';
+
 
 export default function Toggle({
 	enabled = false,
