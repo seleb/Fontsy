@@ -35,13 +35,12 @@
 	padding: 1em 3em;
 	width: 100%;
 	display: flex;
+	gap: 0.5rem;
 	justify-content: flex-start;
 	background: var(--primary);
-	color: white;
 }
 
 .app>footer>a {
-	margin-left: 1em;
 	color: var(--text-primary);
 }
 
