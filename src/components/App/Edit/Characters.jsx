@@ -42,7 +42,6 @@ export function Characters() {
 		[nextPage, prevPage]
 	);
 	useEffect(() => {
-		const limit = limit;
 		if (row > limit) {
 			setRow(limit);
 		}
