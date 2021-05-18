@@ -171,6 +171,11 @@ export function getName({ font: { name = '' } = {} }) {
 	return name;
 }
 
+export function getPixels({ font: { characters = {} } = {} }, character) {
+	const { [character]: c = {} } = characters;
+	return c;
+}
+
 export function getPixelValue({ font: { characters = {} } = {} }, { character, x, y }) {
 	const { [character]: { [positionToString(x, y)]: value } = {} } = characters;
 	return !!value;

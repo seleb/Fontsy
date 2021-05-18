@@ -20,6 +20,7 @@
 	},
 	"dependencies": {
 		"babel-polyfill": "^6.26.0",
+		"draw-1-bit": "^1.0.3",
 		"just-give-me-the-pixels": "^1.0.2",
 		"preact": "^10.5.13",
 		"react-redux": "^7.2.4",

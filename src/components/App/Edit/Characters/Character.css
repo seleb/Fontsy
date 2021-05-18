@@ -1,8 +1,11 @@
 .character {
-	display: grid;
-	grid-gap: 1px;
-	background: grey;
+	background: none;
 	position: relative;
+}
+
+.character canvas {
+	width: 100%;
+	height: 100%;
 }
 
 .character>.pixel {
@@ -10,11 +13,17 @@
 }
 
 .character::after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
 	content: attr(data-character);
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 4em;
+	font-size: 3rem;
 	background: black;
 	color: white;
 	opacity: 0.25;
