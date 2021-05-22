@@ -12,7 +12,7 @@
 		"prettier": "prettier \"src/**/*.js?(x)\" --list-different"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.14.2",
+		"@babel/core": "^7.14.3",
 		"autoprefixer": "^9.0.0",
 		"parcel": "1.12.3",
 		"parcel-bundler": "^1.12.5",
@@ -21,7 +21,7 @@
 	"dependencies": {
 		"babel-polyfill": "^6.26.0",
 		"draw-1-bit": "^1.1.0",
-		"just-give-me-the-pixels": "^1.0.2",
+		"just-give-me-the-pixels": "^1.0.3",
 		"preact": "^10.5.13",
 		"react-redux": "^7.2.4",
 		"redux": "^4.1.0",
