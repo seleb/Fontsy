@@ -40,4 +40,6 @@ Promise.all([import('./main')])
 	)
 	.then(() => {
 		clearInterval(preloadAnimationInterval);
+	}, () => {
+		clearInterval(preloadAnimationInterval);
 	});
