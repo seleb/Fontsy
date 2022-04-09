@@ -9,6 +9,7 @@
 	color: var(--text-tertiary);
 }
 
-.data-export>a:hover {
+.data-export>a:hover,
+.data-export>a:focus {
 	color: var(--secondary);
 }

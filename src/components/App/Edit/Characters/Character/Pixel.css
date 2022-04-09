@@ -3,7 +3,8 @@
 	height: 0.5em;
 }
 
-.pixel:hover{
+.pixel:hover,
+.pixel:focus {
 	opacity: 0.5;
 }
 

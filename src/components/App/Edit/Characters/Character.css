@@ -33,6 +33,7 @@
 	pointer-events: none;
 }
 
-.character:hover::after {
+.character:hover::after,
+.character:focus::after {
 	opacity: 0;
 }
