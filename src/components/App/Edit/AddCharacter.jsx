@@ -1,7 +1,7 @@
 /* @jsx h */
 import { h } from 'preact';
 import { useCallback, useMemo, useState } from 'preact/hooks';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from '../../../reducers';
 import { addCharacter, getCharacters, removeCharacter } from '../../../reducers/font';
 import './AddCharacter.css';
 

@@ -155,28 +155,28 @@ export default function fontReducer(state = initialState, action) {
 }
 
 // selectors
-export function getCharacters({ font: { characters = {} } = {} }) {
+export function getCharacters({ characters = {} }) {
 	return characters;
 }
 
-export function getWidth({ font: { width = 0 } = {} }) {
+export function getWidth({ width = 0 }) {
 	return width;
 }
 
-export function getHeight({ font: { height = 0 } = {} }) {
+export function getHeight({ height = 0 }) {
 	return height;
 }
 
-export function getName({ font: { name = '' } = {} }) {
+export function getName({ name = '' }) {
 	return name;
 }
 
-export function getPixels({ font: { characters = {} } = {} }, character) {
+export function getPixels({ characters = {} }, character) {
 	const { [character]: c = {} } = characters;
 	return c;
 }
 
-export function getPixelValue({ font: { characters = {} } = {} }, { character, x, y }) {
+export function getPixelValue({ characters = {} }, { character, x, y }) {
 	const { [character]: { [positionToString(x, y)]: value } = {} } = characters;
 	return !!value;
 }

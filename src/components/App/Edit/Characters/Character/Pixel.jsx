@@ -1,8 +1,8 @@
 /* @jsx h */
 import { h } from 'preact';
 import { useCallback } from 'preact/hooks';
-import { useDispatch, useSelector } from 'react-redux';
 import { getPixelValue, setPixel } from '../../../../../reducers/font';
+import { useDispatch, useSelector } from '../../../reducers';
 import './Pixel.css';
 
 export function Pixel({ character = '', x = 0, y = 0 }) {

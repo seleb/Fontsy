@@ -1,7 +1,7 @@
 /* @jsx h */
 import { h } from 'preact';
 import { useCallback } from 'preact/hooks';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from '../../../reducers';
 import { getHeight, getWidth, setHeight, setWidth } from '../../../reducers/font';
 import './FontSize.css';
 

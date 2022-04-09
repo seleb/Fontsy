@@ -1,7 +1,7 @@
 /* @jsx h */
 import { h } from 'preact';
 import { useCallback } from 'preact/hooks';
-import { useDispatch } from 'react-redux';
+import { useDispatch } from '../../../reducers';
 import { clearAllCharacters as actionClearAllCharacters, removeAllCharacters as actionRemoveAllCharacters } from '../../../reducers/font';
 import './Reset.css';
 

@@ -1,8 +1,8 @@
 /* @jsx h */
 import { h } from 'preact';
 import { useMemo } from 'preact/hooks';
-import { useSelector } from 'react-redux';
 import { fontToText } from '../../../lib/fontConverter';
+import { useSelector } from '../../../reducers';
 import { getCharactersWithPixels, getHeight, getName, getWidth } from '../../../reducers/font';
 import './DataExport.css';
 

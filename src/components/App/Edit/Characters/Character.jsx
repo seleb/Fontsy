@@ -2,7 +2,7 @@
 import Draw1Bit from 'draw-1-bit';
 import { h } from 'preact';
 import { useCallback, useEffect, useLayoutEffect, useRef } from 'preact/hooks';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from '../../../../reducers';
 import { getHeight, getPixels, getWidth, positionToString, setPixel } from '../../../../reducers/font';
 import './Character.css';
 

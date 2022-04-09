@@ -1,9 +1,9 @@
 /* @jsx h */
 import { h } from 'preact';
 import { useCallback, useState } from 'preact/hooks';
-import { useDispatch } from 'react-redux';
 import { textToFont } from '../../lib/fontConverter';
 import { imageToFont } from '../../lib/imageConverter';
+import { useDispatch } from '../../reducers';
 import { mergeFont as actionMergeFont, setFont as actionSetFont } from '../../reducers/font';
 import './Import.css';
 

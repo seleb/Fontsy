@@ -1,4 +1,3 @@
-import 'babel-polyfill';
 import 'preact/debug';
 import './assets/index.css';
 
@@ -28,7 +27,7 @@ document.body.appendChild(progressEl);
 
 Promise.all([import('./main')])
 	.then(
-		([{ default: main }]) => {
+		() => {
 			progressEl.remove();
 		},
 		(error) => {
