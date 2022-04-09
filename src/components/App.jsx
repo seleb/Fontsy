@@ -28,6 +28,7 @@ export default function App() {
 			<footer>
 				<h2>{pkg.name}</h2>v{pkg.version}
 				<a href="https://ledoux.itch.io/bitsy">Bitsy Game Maker</a>
+				<a href="https://itch.io/game-assets/tag-bitsy/tag-fonts">More bitsyfonts</a>
 				<a href="https://twitter.com/SeanSLeBlanc">Contact</a>
 			</footer>
 		</div>
