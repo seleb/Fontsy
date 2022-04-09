@@ -72,7 +72,7 @@ export function mergeFont({ name, width, height, pixels }) {
 }
 
 // reducer
-const initialState = fontReducer({}, setFont(textToFont(defaultFont)));
+export const initialState = fontReducer({}, setFont(textToFont(defaultFont)));
 
 export default function fontReducer(state = initialState, action) {
 	switch (action.type) {

@@ -1,13 +1,13 @@
 /* @jsx h */
 import { createContext, h } from 'preact';
 import { useContext, useMemo, useReducer } from 'preact/hooks';
-import font from './reducers/font';
+import font, { initialState } from './reducers/font';
 
 const contextState = createContext();
 const contextDispatch = createContext();
 
 export function Provider({ children }) {
-	const [state, dispatch] = useReducer(font);
+	const [state, dispatch] = useReducer(font, initialState);
 	return (
 		<contextState.Provider value={state}>
 			<contextDispatch.Provider value={dispatch}>{children}</contextDispatch.Provider>
