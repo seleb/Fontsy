@@ -6,6 +6,7 @@ export default defineConfig(({ command }) => ({
 	root: 'src',
 	base: './',
 	build: {
+		outDir: '../dist',
 		emptyOutDir: true,
 		rollupOptions: {
 			plugins: [
