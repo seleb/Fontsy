@@ -26,8 +26,7 @@ export default function App() {
 				</Collapsible>
 			</main>
 			<footer>
-				<h2>{pkg.name}</h2>
-				v{pkg.version}
+				<h2>{pkg.name}</h2>v{pkg.version}
 				<a href="https://ledoux.itch.io/bitsy">Bitsy Game Maker</a>
 				<a href="https://twitter.com/SeanSLeBlanc">Contact</a>
 			</footer>

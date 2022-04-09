@@ -6,17 +6,16 @@ import font from './reducers/font';
 const contextState = createContext();
 const contextDispatch = createContext();
 
-export function Provider({
-	children
-})
-{
+export function Provider({ children }) {
 	const [state, dispatch] = useReducer(font);
-	return <contextState.Provider value={state}><contextDispatch.Provider value={dispatch}>
-		{children}
-	</contextDispatch.Provider></contextState.Provider>
+	return (
+		<contextState.Provider value={state}>
+			<contextDispatch.Provider value={dispatch}>{children}</contextDispatch.Provider>
+		</contextState.Provider>
+	);
 }
 
-export function useDispatch(){
+export function useDispatch() {
 	return useContext(contextDispatch);
 }
 

@@ -10,10 +10,10 @@ export function Character({ character = '' }) {
 	const dispatch = useDispatch();
 	const width = useSelector(getWidth);
 	const height = useSelector(getHeight);
-	const pixels = useSelector(state => getPixels(state, character));
+	const pixels = useSelector((state) => getPixels(state, character));
 	const style = {
-		width: `${width/2}rem`,
-		height: `${height/2}rem`,
+		width: `${width / 2}rem`,
+		height: `${height / 2}rem`,
 	};
 	const characterStr = String.fromCodePoint(character);
 	const drawRef = useRef();
@@ -29,7 +29,7 @@ export function Character({ character = '' }) {
 	useLayoutEffect(() => {
 		for (let y = 0; y < height; ++y) {
 			for (let x = 0; x < width; ++x) {
-				drawRef.current.fill(x, y, !!pixels[positionToString(x,y)]);
+				drawRef.current.fill(x, y, !!pixels[positionToString(x, y)]);
 			}
 		}
 		drawRef.current.render();
@@ -48,9 +48,7 @@ export function Character({ character = '' }) {
 			drawRef.current.removeEventListener('draw', onInput);
 		};
 	}, [setValue]);
-	return (
-		<div ref={ref} data-character={characterStr} title={`${character}: ${characterStr}`} className="character" style={style} />
-	);
+	return <div ref={ref} data-character={characterStr} title={`${character}: ${characterStr}`} className="character" style={style} />;
 }
 
 export default Character;

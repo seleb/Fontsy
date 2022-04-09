@@ -11,8 +11,8 @@ export function CharacterSet({ name = '', start = 0, end = 0 }) {
 	const characterSet = useMemo(() => new Array(end - start).fill(start).map((v, i) => v + i), [start, end]);
 	const dispatch = useDispatch();
 	const state = useMemo(() => {
-		if (characterSet.every(i => characters[i])) return 'checked';
-		if (characterSet.some(i => characters[i])) return 'indeterminate';
+		if (characterSet.every((i) => characters[i])) return 'checked';
+		if (characterSet.some((i) => characters[i])) return 'indeterminate';
 		return 'unchecked';
 	}, [characters, characterSet]);
 	const onClick = useCallback(() => {
