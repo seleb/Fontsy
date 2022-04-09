@@ -1,7 +1,7 @@
 {
 	"private": true,
 	"name": "fontsy",
-	"version": "2.3.1",
+	"version": "2.4.0",
 	"description": "bitsy font tool",
 	"author": "Sean S. LeBlanc <sean.s.leblanc@gmail.com>",
 	"scripts": {
