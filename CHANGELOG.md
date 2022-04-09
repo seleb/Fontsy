@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/seleb/Fontsy/compare/v2.4.0...v2.4.1) (2022-04-09)
+
+
+### Bug Fixes
+
+* build directory ([2a9ef44](https://github.com/seleb/Fontsy/commit/2a9ef44cb754363e1f6d2c013e55f85e8ac32c0b))
+
 # [2.4.0](https://github.com/seleb/Fontsy/compare/v2.3.1...v2.4.0) (2022-04-09)
 
 
