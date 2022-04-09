@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/seleb/Fontsy/compare/v2.3.1...v2.4.0) (2022-04-09)
+
+
+### Features
+
+* add link to more bitsyfonts in footer ([c01e055](https://github.com/seleb/Fontsy/commit/c01e0555b59885c5b8dad436d0bef917b6fab765))
+
 ## [2.3.1](https://github.com/seleb/Fontsy/compare/v2.3.0...v2.3.1) (2022-04-09)
 
 
