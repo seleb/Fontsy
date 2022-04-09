@@ -1,0 +1,25 @@
+name: release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm run build
+      - id: package-version
+        uses: martinbeentjes/npm-get-version-action@v1.1.0
+      - uses: josephbmanley/butler-publish-itchio-action@v1.0.3
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: web
+          ITCH_GAME: fontsy
+          ITCH_USER: seansleblanc
+          PACKAGE: dist
+          VERSION: ${{ steps.package-version.outputs.current-version}}
