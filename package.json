@@ -14,7 +14,7 @@
 		"@preact/preset-vite": "^2.2.0",
 		"prettier": "^2.3.0",
 		"rollup-plugin-visualizer": "^5.6.0",
-		"vite": "^2.9.16"
+		"vite": "^2.9.17"
 	},
 	"dependencies": {
 		"draw-1-bit": "^1.1.1",
